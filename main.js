@@ -33,10 +33,14 @@ Plotly.d3.csv("https://cibernomano.github.io/Dictionary/test.csv", function(err,
         value['label']=rows[i][idiomas[1]];
         value['idioma']=idiomas[1];
         palabras.push(value);
-    }
-
-    nivel();
+    }    
 });
+
+function start(){
+    document.getElementById('init').hidden = true;
+    document.getElementById('main').hidden = false;
+    nivel();
+}
 
 function nivel(){
     count_win = 0;
