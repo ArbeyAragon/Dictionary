@@ -30,7 +30,7 @@ function setMenuPrincipal(label, i){
 }
 
 
-Plotly.d3.csv("file:///home/arbey/Documentos/Programa_Ingles/test.csv", function(err, rows){
+Plotly.d3.csv("https://cibernomano.github.io/Dictionary/test.csv", function(err, rows){
     console.log(rows)
 });/** */
 
