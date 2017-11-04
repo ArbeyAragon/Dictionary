@@ -49,6 +49,8 @@ var lenDataNivel = 0;
 var count_win = 0;
 var count_dan = 0;
 
+var idByHide = [];
+
 
 
 function speak (text) {
@@ -91,6 +93,7 @@ function start(){
 function nivel(){
     count_win = 0;
     count_dan = 0;
+    idByHide = [];
     
     let dataTem = palabras.slice(0, inxPal);
     var inxs = gerRandomArray(dataTem.length);
@@ -175,9 +178,13 @@ function setMenuPrincipal(id,index,label, idioma){
 
         document.getElementById(dataInit.id).disabled = true;
         document.getElementById(dataEnd.id).disabled = true;
+        idByHide.push(dataInit.id);
+        idByHide.push(dataEnd.id);
         setTimeout(() => {
-            document.getElementById(dataInit.id).hidden = true;
-            document.getElementById(dataEnd.id).hidden = true;    
+            idByHide.forEach((valueId) => {
+                document.getElementById(valueId).hidden = true;    
+            });
+            idByHide = [];
         }, 2000)
         
         if(dataInit.index == dataEnd.index){
