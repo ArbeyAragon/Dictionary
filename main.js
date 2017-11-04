@@ -1,5 +1,40 @@
 
 var idiomas = ['esp','ing'];
+var idmSpetch = idiomas[1]
+
+var spentchCom = false;
+
+////voice load 
+
+function checkCompatibilty () {
+    if(!('speechSynthesis' in window)){
+        alert('Your browser is not supported. If google chrome, please upgrade!!');
+    }else{
+        console.log("Puede hablar")
+        spentchCom = true;
+    }
+};
+
+checkCompatibilty();
+
+var voiceMap = [];
+
+function loadVoices () {
+    var voices = speechSynthesis.getVoices();
+    for (var i = 0; i < voices.length; i++) {
+        var voice = voices[i];
+        voiceMap[voice.name] = voice;
+    };
+};
+
+window.speechSynthesis.onvoiceschanged = function(e){
+    loadVoices();
+};
+
+const voice = voiceMap['Google UK English Male'];
+////////////////
+
+
 
 var palabras = [];
 var inxPal = 4
@@ -14,6 +49,17 @@ var lenDataNivel = 0;
 var count_win = 0;
 var count_dan = 0;
 
+
+
+function speak (text) {
+    var msg = new SpeechSynthesisUtterance();
+    msg.volume = 1;
+    msg.voice = voice;
+    msg.rate = 1;
+    msg.Pitch = 1;
+    msg.text = text;
+    window.speechSynthesis.speak(msg);
+};
 
 Plotly.d3.csv("https://cibernomano.github.io/Dictionary/test.csv", function(err, rows){
     let datos = '';
@@ -126,10 +172,14 @@ function setMenuPrincipal(id,index,label, idioma){
         status=0;
         dataEnd=val;
         lenDataNivel-=2;
-        document.getElementById(dataInit.id).hidden = true;
-        document.getElementById(dataEnd.id).hidden = true;
 
-
+        document.getElementById(dataInit.id).disabled = true;
+        document.getElementById(dataEnd.id).disabled = true;
+        setTimeout(() => {
+            document.getElementById(dataInit.id).hidden = true;
+            document.getElementById(dataEnd.id).hidden = true;    
+        }, 2000)
+        
         if(dataInit.index == dataEnd.index){
             count_win++
             document.getElementById('count_win').textContent = count_win;
@@ -137,10 +187,12 @@ function setMenuPrincipal(id,index,label, idioma){
             count_dan++
             document.getElementById('count_dan').textContent = count_dan;
         }
-        
-        //count_win
-        //count_dan
+
     }
+    if(spentchCom && (idioma == idmSpetch)){
+        speak(label)
+    }
+
     if(lenDataNivel <= 0){
         setTimeout( val => {
             nivel();
@@ -175,48 +227,3 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-/*
-const txtEmail = document.getElementById('txtEmail');
-const txtPassword = document.getElementById('txtPassword');
-const btnLogin = document.getElementById('btnLogin');
-const btnSignUp = document.getElementById('btnSignUp');
-const btnLogout = document.getElementById('btnLogout');
-
-/*
-const bodyId = document.getElementById('bodyId');
-
-
-const menuPrincipal = ['ib_m','oanda_m','poloniex_m']
-
-function setMenuPrincipal(menuP){
-    menuPrincipal.forEach( m => {
-        document.getElementById(m.replace('_m','')).hidden = !(m===menuP)
-        //console.log(document.getElementById(m))
-        if(m===menuP){
-            document.getElementById(m).classList.add("active") 
-        } else {
-            document.getElementById(m).classList.remove("active"); 
-        }
-    });
-}
-
-
-var logOutBool = false;
-
-btnLogin.addEventListener('click', e => {
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
-    
-    const auth = firebase.auth();
-    console.log('Loggea usuario')
-    //btnLogout.hidden = false
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(err => console.log(err.message))
-
-});
-
-
-function rand() {
-    return Math.random();
-}
-/** */
