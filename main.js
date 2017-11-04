@@ -202,6 +202,9 @@ function setMenuPrincipal(id,index,label, idioma){
 
     if(lenDataNivel <= 0){
         setTimeout( val => {
+            if(count_dan>=1){
+                inxPal=inxPal-2;
+            }
             nivel();
         },2000)
     }
