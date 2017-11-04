@@ -85,9 +85,13 @@ function setData(data){
     status=0;
     let datos = ''
     let  len = data.length-1;
-    datos = datos + `<button type="button" class="btn btn-secondary" onclick="udoStatus()">Udo</button> 
-        <p><a class="text-success">Win: </a><a href="#" id="count_win" class="text-success">0</a></p>
-        <p><a class="text-danger">Losse: </a><a href="#" id="count_dan" class="text-danger">0</a></p>
+    datos = datos + `
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <button type="button" class="btn btn-secondary" onclick="udoStatus()">Udo</button> 
+        <p style="font-size:36px;"><a class="text-success">Win: </a><a href="#" id="count_win" class="text-success">0</a>  </p>
+        <p style="font-size:36px;"><a class="text-danger">Losse: </a><a href="#" id="count_dan" class="text-danger">0</a>  </p>
+    </div>
+    <br><br>
     <div class="row">`;
         datos=datos+'<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">';
         for(var i = 0 ; i <= len ; i++){
