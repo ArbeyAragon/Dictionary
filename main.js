@@ -84,6 +84,12 @@ Plotly.d3.csv("https://cibernomano.github.io/Dictionary/test.csv", function(err,
     }    
 });
 
+function selectedDictionary(dictionaryFile){
+    console.log(dictionaryFile)
+    document.getElementById("btnStart").disabled = false;
+}
+
+
 function start(){
     document.getElementById('init').hidden = true;
     document.getElementById('main').hidden = false;

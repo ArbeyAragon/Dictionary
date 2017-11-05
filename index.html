@@ -14,7 +14,26 @@
     <div class="card">
         <div class="container text-center" id="init">
             <h1>Game of memory</h1>
-            <button type="button" class="btn btn-primary" onclick="start()">Start</button> 
+
+                <div><label class="radio-inline"><input 
+                    type="radio" 
+                    onclick="selectedDictionary('3000palabras.csv')" 
+                    name="optradio">Lista de 3000 palabras mas usadas en el ingles</label></div>
+                <div><label class="radio-inline"><input 
+                    type="radio" 
+                    onclick="selectedDictionary('3000palabras.csv')"
+                    name="optradio">Lista de 300 palabras mas usadas en el ingles</label></div>    
+                <div><label class="radio-inline"><input 
+                    type="radio"
+                    onclick="selectedDictionary('3000palabras.csv')" 
+                    name="optradio">Lista de 300 palabras mas usadas en el ingles</label></div>
+                <div><label class="radio-inline"><input 
+                    type="radio"
+                    onclick="selectedDictionary('3000palabras.csv')" 
+                    name="optradio">Lista de 300 palabras mas usadas en el ingles</label></div>
+
+                <button type="button" id="btnStart" class="btn btn-primary" onclick="start()" disabled>Start</button> 
+
         </div>
         <div class="container text-center" id="main" hidden>
             <h1>Game of memory</h1>

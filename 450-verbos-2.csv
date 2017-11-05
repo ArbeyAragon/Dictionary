@@ -1,0 +1,455 @@
+esp,INFINITIVE,PAST,PARTICIPLE
+aceptar,accept ,accepted ,accepted 
+agregar,add ,added ,added 
+admirar,admire ,admired ,admired 
+admitir,admit ,admitted ,admitted 
+aconsejar,advise ,advised ,advised 
+afrontar,afford ,afforded ,afforded 
+estar de acuerdo,agree ,agreed ,agreed 
+alertar,alert ,alerted ,alerted 
+permitir,allow ,allowed ,allowed 
+entretener,amuse ,amused ,amused 
+analizar,analyse ,analysed ,analysed 
+anunciar,announce ,announced ,announced 
+molestar,annoy ,annoyed ,annoyed 
+contestar,answer ,answered ,answered 
+"pedir disculpas, disculparse",apologise ,apologised ,apologised 
+aparecer,appear ,appeared ,appeared 
+aplaudir,applaud ,applauded ,applauded 
+apreciar,appreciate ,appreciated ,appreciated 
+aprobar,approve ,approved ,approved 
+discutir,argue ,argued ,argued 
+arreglar,arrange ,arranged ,arranged 
+arrestar,arrest ,arrested ,arrested 
+llegar,arrive ,arrived ,arrived 
+preguntar,ask ,asked ,asked 
+adjuntar,attach ,attached ,attached 
+atacar,attack ,attacked ,attacked 
+intentar,attempt ,attempted ,attempted 
+asistir,attend ,attended ,attended 
+atraer,attract ,attracted ,attracted 
+evitar,avoid ,avoided ,avoided 
+apoyar,back ,backed ,backed 
+hornear,bake ,baked ,baked 
+balancear ,balance ,balanced ,balanced 
+prohibir,ban ,banned ,banned 
+bañarse ,bathe ,bathed ,bathed 
+rogar,beg ,begged ,begged 
+comportarse,behave ,behaved ,behaved 
+pertenecer,belong ,belonged ,belonged 
+bendecir,bless ,blessed ,blessed 
+enceguecer,blind ,blinded ,blinded 
+parpadear                    ,blink ,blinked ,blinked 
+enrojecer                    ,blush ,blushed ,blushed 
+hervir,boil ,boiled ,boiled 
+reservar               ,book ,booked ,booked 
+aburrir                 ,bore ,bored ,bored 
+pedir prestado                  ,borrow ,borrowed ,borrowed 
+rebotar                ,bounce ,bounced ,bounced 
+frenar                 ,brake ,broke ,broken 
+respirar               ,breathe ,breathed ,breathed 
+cepillar                  ,brush ,brushed ,brushed 
+quemar                ,burn ,burnt ,burnt 
+enterrar      ,bury ,buried ,buried 
+llamar                ,call ,called ,called 
+calcular,calculate,calculated,calculated
+acampar,camp ,camped ,camped 
+cuidar,care ,cared ,cared 
+causar,cause ,caused ,caused 
+desafiar,challenge ,challenged ,challenged 
+cambiar,change ,changed ,changed 
+cargar,charge ,charged ,charged 
+cazar,chase ,chased ,chased 
+engañar,cheat ,cheated ,cheated 
+verificar,check ,checked ,checked 
+alegrar,cheer ,cheered ,cheered 
+mascar,chew ,chewed ,chewed 
+reclamar,claim ,claimed ,claimed 
+aplaudir,clap ,clapped ,clapped 
+limpiar,clean ,cleaned ,cleaned 
+aclarar,clear ,cleared ,cleared 
+cerrar,close ,closed ,closed 
+"cobrar, coleccionar",collect ,collected ,collected 
+peinar,comb  ,combed ,combed 
+comparar,compare ,compared ,compared 
+competir,compete ,competed ,competed 
+quejarse,complain,complained  ,complained  
+completar,complete,completed,completed
+concentrarse,concentrate  ,concentrated  ,concentrated 
+concernir,concern ,concerned ,concerned 
+confesar,confess ,confessed ,confessed 
+confundir,confuse ,confused ,confused 
+conectar,connect ,connected ,connected 
+considerar,consider ,considered ,considered
+consistir,consist ,consisted ,consisted 
+contener,contain ,contained ,contained 
+continuar,continue ,continued ,continued 
+copiar,copy ,copied ,copied 
+corregir,correct ,corrected ,corrected 
+toser,cough ,coughed ,coughed 
+contar,count ,counted ,counted 
+cubrir,cover ,covered ,covered 
+rajar,crack ,cracked ,cracked 
+embestir,crash ,crashed ,crashed 
+arrastrarse,crawl ,crawled ,crawled 
+cruzar,cross ,crossed ,crossed 
+aplastar,crush ,crushed ,crushed 
+"gritar, llorar",cry ,cried ,cried 
+curar,cure ,cured ,cured 
+enrular ,curl ,curled ,curled 
+curvar,curve ,curved ,curved 
+pasear en bicicleta,cycle ,cycled ,cycled 
+dañar,damage ,damaged ,damaged 
+bailar,dance ,danced ,danced 
+engañar,deceive ,deceived ,deceived 
+decidir,decide ,decided ,decided 
+decorar,decorate ,decorated ,decorated 
+demorar,delay ,delayed ,delayed 
+"suprimir, eliminar, borrar",delete ,deleted ,deleted 
+deleitar,delight ,delighted ,delighted 
+repartir,deliver ,delivered ,delivered 
+depender,depend ,depended ,depended 
+describir,describe ,described ,described 
+merecer,deserve ,deserved ,deserved 
+destruir,destroy ,destroyed ,destroyed 
+detectar,detect ,detected ,detected 
+desarrollar,develop ,developed ,developed 
+no estar de acuerdo,disagree ,disagreed ,disagreed 
+desaparecer,disappear,disappeared,disappeared
+descubrir,discover,discovered,discovered
+disgustar,dislike ,disliked ,disliked 
+dividir,divide ,divided ,divided 
+duplicar,double ,doubled ,doubled 
+dudar,doubt ,doubted ,doubted 
+soñar,dream ,dreamed ,dreamed 
+vestir,dress ,dressed ,dressed 
+"dejar caer, caerse",drop ,dropped ,dropped 
+ahogar,drown ,drowned ,drowned 
+secar,dry ,dried ,dried 
+limpiar,dust ,dusted ,dusted 
+ganar,earn ,earned ,earned 
+educar,educate ,educated ,educated 
+avergonzar,embarrass,embarrassed,embarrassed
+emplear,employ ,employed ,employed 
+vaciar,empty ,emptied ,emptied 
+alentar,encourage,encouraged,encouraged
+finalizar,end ,ended ,ended 
+disfrutar,enjoy ,enjoyed ,enjoyed 
+ingresar,enter ,entered ,entered 
+entretener,entertain,entertained,entertained
+huir,escape ,escaped ,escaped 
+examinar,examine ,examined ,examined 
+excitar,excite ,excited ,excited 
+excusarse,excuse ,excused ,excused 
+ejercitar,exercise,exercised,exercised
+existir,exist ,existed ,existed 
+expandir,expand ,expanded ,expanded 
+esperar,expect ,expected ,expected 
+explicar,explain ,explained ,explained 
+explotar,explode ,exploded ,exploded 
+extender,extend ,extended ,extended 
+enfrentar,face ,faced ,faced 
+decolorarse,fade ,faded ,faded 
+fracasar,fail ,failed ,failed 
+"imaginar, desear",fancy ,fancied ,fancied 
+atar,fasten ,fastened ,fastened 
+enviar un fax,fax ,faxed ,faxed 
+temer,fear ,feared ,feared 
+ir a buscar,fetch ,fetched ,fetched 
+archivar,file ,filed ,filed 
+llenar,fill ,filled ,filled 
+filmar,film ,filmed ,filmed 
+"disparar, despedir",fire ,fired ,fired 
+"caber, encajar",fit ,fitted ,fitted 
+reparar,fix ,fixed ,fixed 
+"brillar, centellear",flash ,flashed ,flashed 
+flotar,float ,floated ,floated 
+inundarse,flood ,flooded ,flooded 
+"fluir, circular",flow ,flowed ,flowed 
+florecer,flower ,flowered ,flowered 
+doblar,fold ,folded ,folded 
+"seguir, continuar",follow ,followed ,followed 
+engañar,fool ,fooled ,fooled 
+forzar,force ,forced ,forced 
+formar,form ,formed ,formed 
+fundar,found ,founded ,founded 
+enmarcar,frame ,framed ,framed 
+asustar,frighten ,frightened ,frightened 
+freír,fry ,fried ,fried 
+recoger,gather ,gathered ,gathered 
+saludar,greet ,greeted ,greeted 
+graduarse,graduate ,graduated ,graduated 
+engrasar,grease ,greased ,greased 
+gruñir,groan ,groaned ,groaned 
+adivinar,guess ,guessed ,guessed 
+guiar,guide ,guided ,guided 
+martillar,hammer ,hammered ,hammered 
+"pasar, entregar",hand ,handed ,handed 
+"colgar, ahorcar",hang ,hanged ,hanged 
+suceder,happen ,happened ,happened 
+dañar,harm ,harmed ,harmed 
+odiar,hate ,hated ,hated 
+encabezar,head ,headed ,headed 
+calentar,heat ,heated ,heated 
+ayudar,help ,helped ,helped 
+"cazar, ir de caza",hunt ,hunted ,hunted 
+esperar con ansiedad,hope  ,hoped  ,hoped  
+abrazar,hug ,hugged ,hugged 
+apurarse,hurry ,hurried ,hurried 
+identificar,identify ,identified ,identified 
+ignorar,ignore ,ignored ,ignored 
+imaginar,imagine ,imagined ,imagined 
+impresionar,impress ,impressed ,impressed 
+mejorar,improve ,improved ,improved 
+incluir,include ,included ,included 
+aumentar,increase ,increased ,increased 
+influenciar,influence ,influenced ,influenced 
+informar,inform ,informed ,informed 
+inyectar,inject ,injected ,injected 
+"herir, lesionar ",injure ,injured ,injured 
+presentar,introduce ,introduced ,introduced 
+instruir,instruct ,instructed ,instructed 
+intentar,intend ,intended ,intended 
+interesar,interest ,interested ,interested 
+interferir,interfere ,interfered ,interfered 
+interrumpir,interrupt ,interrupted ,interrupted 
+inventar,invent ,invented ,invented 
+invitar,invite ,invited ,invited 
+irritar,irritate ,irritated ,irritated 
+encarcelar,jail ,jailed ,jailed 
+"unir, juntar",join ,joined ,joined 
+bromear,joke ,joked ,joked 
+juzgar,judge ,judged ,judged 
+saltar,jump ,jumped ,jumped 
+patear,kick ,kicked ,kicked 
+matar,kill ,killed ,killed 
+besar,kiss ,kissed ,kissed 
+arrodillarse,kneel ,kneeled ,kneeled 
+tejer,knit ,knitted ,knitted 
+golpear,knock ,knocked ,knocked 
+anudar,knot ,knotted ,knotted 
+etiquetar,label ,labelled ,labelled 
+aterrizar,land ,landed ,landed 
+durar,last ,lasted ,lasted 
+reírse,laugh ,laughed ,laughed 
+lanzar,launch ,launched ,launched 
+nivelar,level ,levelled ,levelled 
+lamer,lick ,licked ,licked 
+"iluminar, alivianar",lighten ,lightened ,lightened 
+gustar,like ,liked ,liked 
+ listar,list , listed , listed 
+ escuchar,listen , listened , listened 
+ vivir,live , lived , lived 
+ cargar,load , loaded , loaded 
+ cerrar con llave,lock , locked , locked 
+ durar,long , longed , longed 
+ mirar,look , looked , looked 
+ amar,love , loved , loved 
+administrar,manage ,managed ,managed 
+marchar,march ,marched ,marched 
+marcar,mark ,marked ,marked 
+casarse,marry ,married ,married 
+hacer juego,match ,matched ,matched 
+medir,measure ,measured ,measured 
+derretirse,melt ,melted ,melted 
+memorizar,memorise,memorised,memorised
+remendar,mend ,mended ,mended 
+ordeñar,milk ,milked ,milked 
+"perder, extrañar",miss ,missed ,missed 
+mezclar,mix ,mixed ,mixed 
+"mover, mudarse",move ,moved ,moved 
+multiplicar,multiply ,multiplied ,multiplied 
+asesinar,murder ,murdered ,murdered 
+clavar,nail ,nailed ,nailed 
+nombrar,name ,named ,named 
+necesitar,need ,needed ,needed 
+"advertir, fijarse en",note  ,noted ,noted 
+prestar atención,notice ,noticed ,noticed 
+numerar,number ,numbered ,numbered 
+obedecer,obey ,obeyed ,obeyed 
+objetar,object ,objected ,objected 
+observar,observe ,observed ,observed 
+obtener,obtain ,obtained ,obtained 
+ofender,offend ,offended ,offended 
+ofrecer,offer ,offered ,offered 
+abrir,open ,opened ,opened 
+"ordenar, pedir",order ,ordered ,ordered 
+inundar,overflow  ,overflowed ,overflowed 
+adeudar,owe ,owed ,owed 
+empacar,pack ,packed ,packed 
+pintar,paint ,painted ,painted 
+estacionar,park ,parked ,parked 
+"pasar, aprobar",pass ,passed ,passed 
+pegar,paste ,pasted ,pasted 
+acariciar,pat ,patted ,patted 
+detenerse,pause ,paused ,paused 
+pedalear,pedal ,pedalled ,pedalled 
+pelar,peel ,peeled ,peeled 
+echar una ojeada,peep ,peeped ,peeped 
+ejecutar,perform ,performed ,performed 
+llamar por teléfono,phone ,phoned ,phoned 
+"recoger, levantar",pick ,picked ,picked 
+"planear, planificar",plan ,planned ,planned 
+plantar,plant ,planted ,planted 
+ubicar,place ,placed ,placed 
+"tocar un instrumento, jugar",play ,played ,played 
+complacer,please ,pleased ,pleased 
+conectar,plug , plugged , plugged 
+señalar,point , pointed ,pointed 
+lustrar,polish , polished ,polished 
+poseer,possess , possessed ,possessed 
+enviar por correo,post , posted ,posted 
+derramar,pour ,poured ,poured 
+practicar,practise ,practised ,practised 
+rezar,pray ,prayed ,prayed 
+preceder,precede ,preceded ,preceded 
+preferir,prefer ,preferred ,preferred 
+preparar,prepare ,prepared ,prepared 
+"presentar, regalar",present ,presented ,presented 
+"presionar, apretar",press ,pressed ,pressed 
+fingir,pretend ,pretended ,pretended 
+impedir,prevent ,prevented ,prevented 
+imprimir,print ,printed ,printed 
+producir,produce ,produced ,produced 
+programar,program,programmed,programmed
+prometer,promise ,promised ,promised 
+proteger,protect ,protected ,protected 
+proveer,provide ,provided ,provided 
+tirar de,pull ,pulled ,pulled 
+bombear,pump ,pumped ,pumped 
+castigar,punish ,punished ,punished 
+empujar,push ,pushed ,pushed 
+ hacer cola,queue ,queued ,queued 
+llover,rain ,rained ,rained 
+levantar,raise ,raised ,raised 
+alcanzar,reach ,reached ,reached 
+darse cuenta,realise ,realised ,realised 
+recibir,receive ,received ,received 
+reconocer,recognise ,recognised ,recognised 
+grabar,record ,recorded ,recorded 
+reducir,reduce ,reduced  ,reduced 
+reflejar,reflect ,reflected ,reflected 
+rechazar,refuse ,refused ,refused 
+lamentarse,regret ,regretted ,regretted 
+relajarse,relax ,relaxed ,relaxed 
+soltar,release ,released ,released 
+confiar,rely ,relied ,relied 
+permanecer,remain ,remained ,remained 
+recordar,remember,remembered,remembered
+acordarse de,remind ,reminded ,reminded 
+eliminar,remove ,removed ,removed 
+alquilar,rent ,rent ,rent 
+reparar,repair ,repaired ,repaired 
+repetir,repeat ,repeated ,repeated 
+reemplazar,replace ,replaced ,replaced 
+responder,reply ,replied ,replied 
+informar,report ,reported ,reported 
+reproducir,reproduce,reproduced,reproduced
+solicitar,request ,requested ,requested 
+rescatar,rescue ,rescued ,rescued 
+jubilarse,retire ,retired ,retired 
+regresar,return ,returned ,returned 
+rimar,rhyme ,rhymed ,rhymed 
+enjuagar,rinse ,rinsed ,rinsed 
+arriesgar,risk ,risked ,risked 
+robar,rob ,robbed ,robbed 
+remar,row ,rowed ,rowed 
+frotar,rub ,rubbed ,rubbed 
+arruinar,ruin ,ruined ,ruined 
+"regir, dominar",rule ,ruled ,ruled 
+despedir,sack ,sacked ,sacked 
+navegar,sail ,sailed ,sailed 
+satisfacer,satisfy ,satisfied ,satisfied 
+"salvar, ahorrar, guardar",save ,saved ,saved 
+gritar,scream ,screamed ,screamed 
+atornillar,screw ,screwed ,screwed 
+sellar,seal ,sealed ,sealed 
+buscar,search ,searched ,searched 
+separar,separate ,separated ,separated 
+servir,serve ,served ,served 
+establecer,settle ,settled ,settled 
+compartir,share ,shared ,shared 
+afeitarse,shave ,shaved ,shaved 
+"proteger, resguardar",shelter ,sheltered ,sheltered 
+comprar,shop ,shopped ,shopped 
+suspirar,sigh ,sighed ,sighed 
+firmar,sign ,signed ,signed 
+hacer señales,signal ,signalled ,signalled 
+pecar,sin ,sinned ,sinned 
+esquiar,ski ,skied ,skied 
+saltearse,skip ,skipped ,skipped 
+deslizarse ,slip ,slipped ,slipped 
+disminuir la velocidad,slow ,slowed ,slowed 
+oler,smell ,smelled ,smelled 
+sonreír,smile ,smiled ,smiled 
+fumar,smoke ,smoked ,smoked 
+estornudar,sneeze ,sneezed ,sneezed 
+roncar,snore ,snored ,snored 
+nevar,snow ,snowed ,snowed 
+empapar,soak ,soaked ,soaked 
+sonar,sound ,sounded ,sounded 
+deletrear,spell ,spelled ,spelled 
+derramar,spill ,spilled ,spilled 
+malcriar,spoil ,spoiled ,spoiled 
+vaporizar,spray ,sprayed ,sprayed 
+"arrancar, comenzar",start ,started ,started 
+"quedarse, permanecer",stay ,stayed ,stayed 
+"pararse, detenerse",stop ,stopped ,stopped 
+almacenar,store ,stored ,stored 
+estirar,stretch ,stretched ,stretched 
+tener éxito,succeed ,succeeded ,succeeded 
+sufrir,suffer ,suffered ,suffered 
+sugerir,suggest ,suggested ,suggested 
+proveer,supply ,supplied ,supplied 
+apoyar,support ,supported ,supported 
+suponer,suppose ,supposed ,supposed 
+sorprender,surprise ,surprised ,surprised 
+rodear,surround ,surrounded ,surrounded 
+sospechar,suspect ,suspected ,suspected 
+colgar,suspend ,suspended ,suspended 
+"cambiar, enchufar",switch ,switched ,switched 
+conversar,talk ,talked ,talked 
+saborear,taste ,tasted ,tasted 
+"tomar el pelo, atormentar",tease ,teased ,teased 
+llamar por teléfono,telephone ,telephoned ,telephoned 
+tentar,tempt ,tempted ,tempted 
+aterrorizar,terrify ,terrified ,terrified 
+comprobar,test ,tested ,tested 
+agradecer,thank ,thanked ,thanked 
+"tildar, marcar",tick ,ticked ,ticked 
+atar,tie ,tied ,tied 
+dar propina,tip ,tipped ,tipped 
+tocar,touch ,touched ,touched 
+remolcar,tow ,towed ,towed 
+"comerciar, negociar",trade ,traded ,traded 
+entrenar,train ,trained ,trained 
+transportar,transport,transported,transported
+viajar,travel ,travelled ,travelled 
+temblar,tremble ,trembled ,trembled 
+confiar,trust ,trusted ,trusted 
+"tratar, intentar ",try ,tried ,tried 
+"volver, dar vuelta",turn ,turned ,turned 
+doblar,twist ,twisted ,twisted 
+escribir a máquina,type ,typed ,typed 
+usar,use ,used ,used 
+desaparecer,vanish ,vanished ,vanished 
+visitar,visit ,visited ,visited 
+esperar,wait ,waited ,waited 
+caminar,walk ,walked ,walked 
+querer,want ,wanted ,wanted 
+advertir,warn ,warned ,warned 
+lavar,wash ,washed ,washed 
+"gastar, desperdiciar",waste ,wasted ,wasted 
+vigilar,watch ,watched ,watched 
+pesar,weigh ,weighed ,weighed 
+"agradecer, recibir,dar la bienvenida,  ",welcome ,welcomed ,welcomed 
+susurrar,whisper ,whispered ,whispered 
+silbar,whistle ,whistle ,whistle 
+"limpiar, secar",wipe ,wiped ,wiped 
+desear,wish ,wished ,wished 
+"imaginarse, preguntarse",wonder ,wondered ,wondered 
+trabajar,work ,worked ,worked 
+preocuparse,worry ,worried ,worried 
+bostezar,yawn ,yawned ,yawned 
+gritar,yell ,yelled ,yelled 
+"pasar muy rápido,  acercar",zoom ,zoomed ,zoomed 
