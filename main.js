@@ -51,7 +51,12 @@ var count_dan = 0;
 
 var idByHide = [];
 
+var textData = 'test.csv';
+var rows_raw = [];
+var listaKeys = [];
+var indexKey = 0;
 
+var inxs;
 
 function speak (text) {
     var msg = new SpeechSynthesisUtterance();
@@ -63,32 +68,48 @@ function speak (text) {
     window.speechSynthesis.speak(msg);
 };
 
-Plotly.d3.csv("https://cibernomano.github.io/Dictionary/test.csv", function(err, rows){
+function selectedDictionary(dictionaryFile){
+    
+    document.getElementById("btnStart").disabled = false;
+    textData = dictionaryFile;
+
+    Plotly.d3.csv("https://cibernomano.github.io/Dictionary/"+dictionaryFile, function(err, rows){
+        rows_raw = rows;
+
+        listaKeys = Object.keys(rows_raw[0]).filter((val) => {
+            return 'esp' !== val
+        });
+        inxs = gerRandomArray(rows_raw.length);
+        //changeData();
+    });
+
+}
+
+function changeData(){
+    palabras = [];
     let datos = '';
-    var inxs = gerRandomArray(rows.length);
     var i = 0;
     for(var inx in inxs){
         i = inxs[inx] 
         
         var value = {}
         value['index']=i;
-        value['label']=rows[i][idiomas[0]];
+        value['label']=rows_raw[i][idiomas[0]];
         value['idioma']=idiomas[0];
         palabras.push(value);
 
         var value = {}
         value['index']=i;
-        value['label']=rows[i][idiomas[1]];
+        value['label']=rows_raw[i][listaKeys[indexKey]];
         value['idioma']=idiomas[1];
         palabras.push(value);
-    }    
-});
-
-function selectedDictionary(dictionaryFile){
-    console.log(dictionaryFile)
-    document.getElementById("btnStart").disabled = false;
+    }   
+    indexKey++;
+    if(indexKey == listaKeys.length){
+        indexKey = 0;
+        inxPal=inxPal+2; 
+    }
 }
-
 
 function start(){
     document.getElementById('init').hidden = true;
@@ -97,6 +118,9 @@ function start(){
 }
 
 function nivel(){
+    
+    changeData();
+
     count_win = 0;
     count_dan = 0;
     idByHide = [];
@@ -121,7 +145,6 @@ function nivel(){
     setTimeout( val => {
         clearInterval(myTimer);
         setData(data);
-        inxPal=inxPal+2; 
     },5000)
 
 }
@@ -146,11 +169,13 @@ function setData(data){
     let  len = data.length-1;
     datos = datos + `
     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-    <button type="button" class="btn btn-secondary" onclick="udoStatus()">Udo</button> 
+        <button type="button" class="btn btn-secondary" onclick="udoStatus()">Udo</button> 
         <p style="font-size:36px;"><a class="text-success">Win: </a><a href="#" id="count_win" class="text-success">0</a>  </p>
         <p style="font-size:36px;"><a class="text-danger">Losse: </a><a href="#" id="count_dan" class="text-danger">0</a>  </p>
     </div>
-    <br><br>
+    <br>
+    <h1>${listaKeys[indexKey]}</h1>
+    <br>
     <div class="row">`;
         datos=datos+'<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">';
         for(var i = 0 ; i <= len ; i++){
