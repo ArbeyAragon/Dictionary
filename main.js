@@ -4,6 +4,9 @@ var idmSpetch = idiomas[1]
 
 var spentchCom = false;
 
+
+var voice;
+
 ////voice load 
 
 function checkCompatibilty () {
@@ -22,18 +25,17 @@ var voiceMap = [];
 function loadVoices () {
     var voices = speechSynthesis.getVoices();
     for (var i = 0; i < voices.length; i++) {
-        var voice = voices[i];
-        voiceMap[voice.name] = voice;
+        var v = voices[i];
+        voiceMap[v.name] = v;
+        if('Google UK English Female' == v.name){
+            voice=v;
+        }
     };
 };
 
 window.speechSynthesis.onvoiceschanged = function(e){
     loadVoices();
 };
-
-const voice = voiceMap['Google UK English Male'];
-////////////////
-
 
 
 var palabras = [];
@@ -55,6 +57,7 @@ var textData = 'test.csv';
 var rows_raw = [];
 var listaKeys = [];
 var indexKey = 0;
+var indexKey2 = 0;
 
 var inxs;
 
@@ -66,6 +69,7 @@ function speak (text) {
     msg.Pitch = 1;
     msg.text = text;
     window.speechSynthesis.speak(msg);
+    console.log(voice)
 };
 
 function selectedDictionary(dictionaryFile){
@@ -104,6 +108,7 @@ function changeData(){
         value['idioma']=idiomas[1];
         palabras.push(value);
     }   
+    indexKey2=indexKey
     indexKey++;
     if(indexKey == listaKeys.length){
         indexKey = 0;
@@ -174,7 +179,7 @@ function setData(data){
         <p style="font-size:36px;"><a class="text-danger">Losse: </a><a href="#" id="count_dan" class="text-danger">0</a>  </p>
     </div>
     <br>
-    <h1>${listaKeys[indexKey]}</h1>
+    <h1>${listaKeys[indexKey2]}</h1>
     <br>
     <div class="row">`;
         datos=datos+'<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">';
