@@ -177,7 +177,7 @@ function setData(data){
     <h1>${listaKeys[indexKey]}</h1>
     <br>
     <div class="row">`;
-        datos=datos+'<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">';
+        datos=datos+'<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">';
         for(var i = 0 ; i <= len ; i++){
             datos=datos+`<button id="id_${i}" onclick="setMenuPrincipal('id_${i}','${data[i].index}','${data[i].label}','${data[i].idioma}')" 
                 type="button" class="btn btn-primary btn-lg border">${data[i].label}</button>`
