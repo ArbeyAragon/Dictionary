@@ -79,11 +79,15 @@ function selectedDictionary(dictionaryFile){
 
     Plotly.d3.csv("https://cibernomano.github.io/Dictionary/"+dictionaryFile, function(err, rows){
         rows_raw = rows;
-
+        console.log(rows)
+        console.log("444444444")
         listaKeys = Object.keys(rows_raw[0]).filter((val) => {
             return 'esp' !== val
         });
+        console.log("555555")
         inxs = gerRandomArray(rows_raw.length);
+
+        console.log("66666666")
         //changeData();
     });
 
