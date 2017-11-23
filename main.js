@@ -82,7 +82,7 @@ function selectedDictionary(dictionaryFile){
         listaKeys = Object.keys(rows_raw[0]).filter((val) => {
             return 'esp' !== val
         });
-        inxs = gerRandomArray(rows_raw.length);
+        inxs = getRandomArray(rows_raw.length);
     });
 
 }
@@ -96,22 +96,22 @@ function changeData(){
         
         var value = {}
         value['index']=i;
-        value['label']=rows_raw[i][idiomas[0]];
+        value['label']=rows_raw[i][idiomas[0]].toLowerCase();
         value['idioma']=idiomas[0];
         palabras.push(value);
 
         var value = {}
         value['index']=i;
-        value['label']=rows_raw[i][listaKeys[indexKey]];
+        value['label']=rows_raw[i][listaKeys[indexKey]].toLowerCase();
         value['idioma']=idiomas[1];
         palabras.push(value);
     }   
     indexKey2=indexKey
     indexKey++;
     if(indexKey == listaKeys.length){
-        indexKey = 0;
-        inxPal=inxPal+2; 
+        indexKey = 0; 
     }
+    inxPal=inxPal+2;
 }
 
 function start(){
@@ -129,7 +129,7 @@ function nivel(){
     idByHide = [];
     
     let dataTem = palabras.slice(0, inxPal);
-    var inxs = gerRandomArray(dataTem.length);
+    var inxs = getRandomArray(dataTem.length);
     var i = 0;
     data = [];
     for(var inx in inxs){
@@ -252,7 +252,7 @@ function udoStatus(){
 }
 
 
-function gerRandomArray(len){
+function getRandomArray(len){
     var randomArray = []
     var randomArrayTem = []
     for(var i = 0 ; i < len ; i++){ randomArrayTem.push(i); }
