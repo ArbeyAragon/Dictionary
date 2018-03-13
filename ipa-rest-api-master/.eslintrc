@@ -1,0 +1,9 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    // overrides
+    "indent": [2, 4],
+    "no-console":0,
+    "consistent-return":0,
+  }
+}
