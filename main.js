@@ -219,7 +219,7 @@ function setMenuPrincipal(id,index,label, idioma){
                 document.getElementById(valueId).hidden = true;    
             });
             idByHide = [];
-        }, 2000)
+        }, 3000)
         
         if(dataInit.index == dataEnd.index){
             count_win++
@@ -240,7 +240,7 @@ function setMenuPrincipal(id,index,label, idioma){
                 inxPal=inxPal-2;
             }
             nivel();
-        },2000)
+        },3000)
     }
 }
 
