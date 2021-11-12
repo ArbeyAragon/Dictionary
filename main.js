@@ -77,7 +77,7 @@ function selectedDictionary(dictionaryFile){
     document.getElementById("btnStart").disabled = false;
     textData = dictionaryFile;
 
-    Plotly.d3.csv("https://cibernomano.github.io/Dictionary/"+dictionaryFile, function(err, rows){
+    Plotly.d3.csv("https://raw.githubusercontent.com/ArbeyAragon/Dictionary/dictionaries/master/"+dictionaryFile, function(err, rows){
         rows_raw = rows;
         listaKeys = Object.keys(rows_raw[0]).filter((val) => {
             return 'esp' !== val
