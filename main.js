@@ -83,6 +83,9 @@ function selectedDictionary(dictionaryFile){
             return 'esp' !== val
         });
         inxs = getRandomArray(rows_raw.length);
+        inxs = getRandomArray(rows_raw.length);
+        inxs = getRandomArray(rows_raw.length);
+        console.log(rows_raw.length);
     });
 
 }
@@ -129,7 +132,11 @@ function nivel(){
     idByHide = [];
     
     let dataTem = palabras.slice(0, inxPal);
-    var inxs = getRandomArray(dataTem.length);
+    var inxs; 
+    inxs = getRandomArray(dataTem.length);
+    inxs = getRandomArray(dataTem.length);
+    inxs = getRandomArray(dataTem.length);
+    
     var i = 0;
     data = [];
     for(var inx in inxs){
@@ -148,7 +155,7 @@ function nivel(){
     setTimeout( val => {
         clearInterval(myTimer);
         setData(data);
-    },5000)
+    },4000)
 
 }
 
@@ -219,7 +226,7 @@ function setMenuPrincipal(id,index,label, idioma){
                 document.getElementById(valueId).hidden = true;    
             });
             idByHide = [];
-        }, 3000)
+        }, 4000)
         
         if(dataInit.index == dataEnd.index){
             count_win++
@@ -240,7 +247,7 @@ function setMenuPrincipal(id,index,label, idioma){
                 inxPal=inxPal-2;
             }
             nivel();
-        },3000)
+        },4000)
     }
 }
 
@@ -259,6 +266,8 @@ function getRandomArray(len){
     for(var i = 0 ; i < len ; i++){
         let temp = randomArrayTem.length;
         let valR = getRandomInt(0, temp-1);
+        valR = getRandomInt(0, temp-1);
+        valR = getRandomInt(0, temp-1);
         
         randomArray.push(randomArrayTem[valR]);
         randomArrayTem.splice(valR, 1);
