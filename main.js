@@ -150,7 +150,7 @@ function nivel(){
     var myTimer = setInterval( val => {
         document.getElementById('time').textContent = interval;
         interval--;
-    }, 1000);
+    }, 2000);
 
     setTimeout( val => {
         clearInterval(myTimer);
@@ -189,7 +189,7 @@ function setData(data){
     <div class="row">`;
         datos=datos+'<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">';
         for(var i = 0 ; i <= len ; i++){
-            datos=datos+`<button id="id_${i}" onclick="setMenuPrincipal('id_${i}','${data[i].index}','${data[i].label}','${data[i].idioma}')" 
+            datos=datos+`<button id="id_${i}" onclick="setMenuPrincipal('id_${i}','${data[i].index}',\`${data[i].label}\`,'${data[i].idioma}')" 
                 type="button" class="btn btn-primary btn-lg border">${data[i].label}</button>`
         }
         datos=datos+'</div>';
