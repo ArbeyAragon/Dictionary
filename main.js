@@ -105,6 +105,12 @@ function changeData(){
 
         var value = {}
         value['index']=i;
+        
+        console.log(i);
+        console.log(indexKey);
+        console.log(listaKeys[indexKey]);
+        console.log(rows_raw[i]);
+        console.log(rows_raw[i][listaKeys[indexKey]]);
         value['label']=rows_raw[i][listaKeys[indexKey]].toLowerCase();
         value['idioma']=idiomas[1];
         palabras.push(value);
