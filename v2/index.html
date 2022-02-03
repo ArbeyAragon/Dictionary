@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+
+    <style type="text/css">
+      body {
+        background: #f6f6f6;
+      }
+      .container {
+        background: #f6f6f6;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 400px;
+        padding: 20px;
+        box-shadow: 0 0 10px 0 #ccc;
+      }
+      .container textarea {
+        width: 390px;
+        height: 100px;
+        resize: none;
+        outline: none;
+        border: 1px solid #ccc;
+      }
+      .container label {
+        display: block;
+        width: 400px;
+      }
+      .container label span {
+        width: 100px;
+        margin-top: 20px;
+        display: inline-block;
+      }
+      .container label select,
+      .container label input {
+        width: 290px;
+      }
+      .button {
+        display: inline-block;
+        background: #f6f6f6;
+        padding: 10px 20px;
+        color: #000;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .button:hover {
+        box-shadow: 4px 4px 10px 0 #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center" id="init">
+      <h1>Game of memory</h1>
+      <button type="button" id="btnStart" class="btn btn-primary">Start</button>
+    </div>
+
+    <div class="container text-center" id="worlds" hidden>
+      <h1>Worlds</h1>
+      <div id="inittable"></div>
+      <h2 id="counter"></h2>
+    </div>
+
+    <div class="text-center" id="main" hidden>
+      <h1>Game of memory</h1>
+      <p style="font-size: 36px">
+        <a class="text-success">Win: </a
+        ><a href="#" id="count_win" class="text-success">0</a>
+      </p>
+      <p style="font-size: 36px">
+        <a class="text-danger">Losse: </a
+        ><a href="#" id="count_dan" class="text-danger">0</a>
+      </p>
+      <button type="button" id="btnUdo" class="btn btn-primary">Udo</button>
+      <button type="button" id="btnLabelError" class="btn btn-primary" disabled>
+        Error
+      </button>
+      <hr />
+      <div id="btnesp"></div>
+      <hr />
+      <div id="btning"></div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>

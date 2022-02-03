@@ -41,8 +41,8 @@ Lo que sea (resignado),Whatever
 ¿Dónde quedamos?,Where shall we meet?
 A quién le importa,Who cares!
 Me has alegrado el día,You made my day!
-De perdidos al río (UK),In for a penny in for a pound
-De perdidos al río (US),In for a dime in for a dollar
+dentro por un penique, dentro por una libra (UK),In for a penny in for a pound
+dentro por diez céntimos, dentro por un dólar (US),In for a dime in for a dollar
 En pelotas,In the altogether
 Ya lo creo,Indeed
 Del revés,Inside out
@@ -215,7 +215,7 @@ Ir de flor en flor,To sow your wild oats
 Malcriar/mimar/consentir a alguien,To spoil [somebody] rotten
 En resumen…,To sum up…
 Coger algo con pinzas (sobre algo que te han dicho),To take [something] with a pinch of salt
-Darle una paliza a alguien,To tan somebody’s hide
+Darle una paliza a alguien,Beat someone up
 Pijo,Toff/Posh
 Tren con destino a..,Train bound for
 Boca abajo / patas arriba / del revés / invertido (dado la vuelta),Upside down
@@ -340,7 +340,7 @@ Estás bien?,Are you okay?
 Estás listo?,Are you ready?
 Estás enfermo?,Are you sick?
 Estás seguro?,Are you sure?
-Estás esperando a alguien?,Are you waiting for someone?
+Estás esperando a alguien?,Are you waiting for anyone?
 Estás trabajando hoy?,Are you working today?
 Vas a trabajar mañana?,Are you working tomorrow?
 Están tus hijos contigo?,Are you children with you?
@@ -375,7 +375,7 @@ Puedo usar tu teléfono?,Can I use your phone?
 Puede ser más barato?,Can it be cheaper?
 Nos puedes dar un menu por favor?,Can we have a menu please?
 Nos puedes traer más pan por favor?,Can we have some more bread please?
-Nos podemos sentar allí?, Can you call back later? 
+¿Puedes volver a llamar más tarde?, Can you call back later? 
 Puedes llamar más tarde?,Can we sit over there?
 Puedes llamarme más tarde?,Can you call me back later?
 Puedes llevar esto para mi?,Can you carry this for me?
@@ -431,7 +431,6 @@ Estudia en la Universidad de Boston.,He studies at Boston University
 Piensa que no queremos ir.,He thinks we don't want to go
 Trabaja en una empresa de ordenadores en New York.,He works at a computer company in New York
 Volverá en 20 minutos.,He'll be back in 20 minutes
-Hola.,Hello
 Aquí está tu ensalada.,Here is your salad
 Aquí está.,Here it is
 Aquí tienes.,Here you are
@@ -542,13 +541,12 @@ Me rindo.,I give up
 Tuve un accidente.,I got in an accident
 Estoy resfriado.,I have a cold
 Tengo un dolor de cabeza.,I have a headache
-Tengo muchas cosas que hacer. I have a questionI want to ask you,I have a lot of things to do
+Tengo muchas cosas que hacer.,I have a lot of things to do
 Tengo una cosa que te quiero preguntar.,I want ask you a question
 Tengo una reserva.,I have a reservation
 Tengo dinero.,I have Money
 Tengo uno en mi coche.,I have one in my car
 Tengo un dolor en mi brazo.,I have pain in my arm
-Tengo 3 hijos, 2 niñas y 1 niño.,I have three children, two girls and one boy
 Tengo que ir al apartado de correos.,I have to go to the post office
 Tengo que lavar mi ropa.,I have to wash my clothes
 Tengo dos hermanas.,I have two sisters
@@ -797,7 +795,7 @@ Vamos a compartir.,Let's share
 Macho o hembra?.,Male or female?
 Puedo hablar con la señora Smith, por favor?,May I speak to Mrs. Smith please?
 Más de 200 millas.,More than 200 miles
-Más de eso.,More tan that
+Más de eso.,More of that.
 Mi cumpleaños es el 27 de Agosto.,My birthday is August 27th
 Mi coche no está funcionando.,My car isn't working
 Mi coche ha estado chocado de otro coche.,My car was hit by another car
@@ -875,7 +873,7 @@ Quieres ir al cine?,Do you want to go to the cinema?
 Quieres ir conmigo?,Do you want to go whit me?
 Hay alguien aquí que hable inglés?,Does anyone here speak English?
 Le gusta la escuela?,Does he like the school?
-Nieva mucho en el invierno en Massachusetts?,Does it often snow in the winter in Massachusetts
+Nieva mucho en el invierno en Massachusetts?,Does it often snow in the winter in Massachusetts?
 Esta carretera va a Nueva York?,Does this road go to New York?
 No hagas eso,Don't do that.
 No te preocupes,Don't worry.
@@ -944,7 +942,6 @@ Mas de eso.,More than that.
 No es nada.,Never mind.
 La próxima vez.,Next time.
 No-gracias.,No-thank you.
-No.,No.
 Tonterías.,Nonsense.
 Recentemente no.,Not recently.
 Todavía no.,Not yet.
