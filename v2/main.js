@@ -19,12 +19,14 @@ var textData = "frases.csv";
 var inxs = [];
 var data_list = [];
 var main_index = 3;
+var min_index = 0;
 var data_list_level = [];
 
 var lang_selected_1 = null;
 var lang_selected_2 = null;
 var len_data = 0;
 
+var count_total = 0;
 var win_counter = 0;
 var lose_counter = 0;
 var is_validating = false;
@@ -123,9 +125,14 @@ function getRandomInt(min, max) {
 
 function renderTable() {
   data_list_level = [];
-  for (var i = 0; i < main_index; i++) {
+  
+  if((main_index-min_index) > 12){
+    min_index += 3;
+  }
+  for (var i = min_index; i < main_index; i++) {
     data_list_level.push(data_list[inxs[i]]);
   }
+
   len_data = data_list_level.length;
   console.log(data_list_level);
   let html = "";
@@ -208,6 +215,8 @@ function validateWin(index) {
       console.log("1-Win");
       win_counter++;
       document.getElementById("count_win").textContent = win_counter;
+      count_total++;
+      document.getElementById("count_total").textContent = count_total;
       console.log(win_counter);
 
       console.log(data_list_level);
@@ -231,6 +240,8 @@ function validateWin(index) {
       len_data--;
       lose_counter++;
       document.getElementById("count_dan").textContent = lose_counter;
+      count_total--;
+      document.getElementById("count_total").textContent = count_total;
 
       document.getElementById(lang_selected_1).hidden = true;
       document.getElementById(lang_selected_2).hidden = true;
