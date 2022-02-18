@@ -619,7 +619,7 @@ Está John aquí?, Is John here?
 Está bien eso?.,Is that ok?
 Depende del tiempo.,It depends on the weather
 Llovió fuertemente hoy.,It rained very hard today
-Llegaré dentro de poco.,It will arrive shortly
+Llegara dentro de poco.,It will arrive shortly
 Son las 8.45.,It's 8.45
 Macho o hembra?.,Male or female?
 Más de 200 millas.,More than 200 miles
@@ -694,8 +694,6 @@ Son iguales?,Are they the same?
 A qué hora?,At what time?
 Puedes mostrarme?,Can you show me?
 Dame el bolígrafo.,Give me the pen
-Es un Americano.,He's an American
-Es un Ingeniero.,He's an Engineer
 Es muy molestoso.,He's very annoying
 Es muy famoso.,He's very famous
 Y el Sábado?,How about Saturday?
@@ -704,7 +702,6 @@ No lo se.,I don't know
 No es nada.,I don't mind
 No creo.,I don't think so
 Tengo una reserva.,I have a reservation
-Tengo dos hermanas.,I have two sisters
 Vivo en California.,I live in California
 Hice un error.,I made a mistake
 Hice una tarta.,I made this cake
@@ -796,7 +793,6 @@ Te quiero.,I love you.
 Tengo frio.,I’m cold.
 Estoy feliz.,I’m happy.
 Tengo hambre.,I’m hungry.
-Estoy casado.,I’m married.
 Tengo sed.,I’m thirsty.
 Es bastante?,Is that enough?
 Tienes miedo?,Are you afraid?
@@ -811,7 +807,6 @@ Estás enfermo?,Are you sick?
 Estás seguro?,Are you sure?
 La empresa va bien,Business is good
 Llama a la policia,Call the police
-Puedes nadar?,Can you swim?
 Buenas tardes señor.,Good evening Sir
 ¿Llegaste?,Have you arrived?
 ¿Cuántos?.,How many?
@@ -839,7 +834,6 @@ La fecha de caducidad,Expiration date.
 Tiene razón.,He's right.
 Pago yo.,I'll pay.
 Tengo frio.,I'm cold.
-Estoy feliz.,I'm happy.
 Tengo hambre.,I'm hungry.
 Estoy casado.,I'm married.
 Tengo sed.,I'm thirsty.
@@ -854,7 +848,7 @@ Llevalo fuera.,Take it outside.
 Gracias señorita.,Thank you miss.
 Gracias senor.,Thank you sir.
 Ya basta.,That's enough.
-Si-de verdad.,Yes-really.
+"Si,de verdad.","Yes,really."
 Eres bonita.,You're beautiful.
 ¡Anímate!,Cheer up!
 ¡Mierda!,Damn it!
