@@ -13,9 +13,10 @@ var gamePanel = document.getElementById("main");
 
 const lang1 = "esp";
 const lang2 = "ing";
-const lang3 = "suc";
+const lang3 = "sue";
 
-var voice;
+var voiceIng;
+var voiceSue;
 configVoices();
 
 var spentchCom = false;
@@ -51,17 +52,43 @@ function configVoices() {
       var v = voices[i];
       voiceMap[v.name] = v;
       console.log(v.name);
-      if ("Google UK English Female" == v.name) {
-        voice = v;
+
+      //valida si ["english", "united", "states"] estan en el nombre de la voz todos y lo asigna a un booleano
+      const isIng = ["english", "united", "states"].every((item) =>
+        v.name.toLowerCase().includes(item)
+      );
+
+      const isSue = ["swedish", "sweden"].every((item) =>
+        v.name.toLowerCase().includes(item)
+      );
+
+      if (isIng) {
+        console.log("***************0");
+        voiceIng = v;
+      } else if (isSue) {
+        console.log("***************1");
+        voiceSue = v;
       }
     }
   };
 }
 
-function speak(text) {
+function speakIng(text) {
   var msg = new SpeechSynthesisUtterance();
   msg.volume = 1;
-  msg.voice = voice;
+  msg.voice = voiceIng;
+  msg.rate = 1;
+  msg.Pitch = 1;
+  msg.text = text;
+  window.speechSynthesis.speak(msg);
+  //console.log(voice)
+}
+
+
+function speakSue(text) {
+  var msg = new SpeechSynthesisUtterance();
+  msg.volume = 1;
+  msg.voice = voiceSue;
   msg.rate = 1;
   msg.Pitch = 1;
   msg.text = text;
@@ -145,8 +172,9 @@ function renderTable() {
   let len = data_list_level.length;
   html = html + '<ul class="list-group">';
   for (var i = 0; i < len; i++) {
+    //${data_list_level[i][lang1]}  =  
     html =
-      `<li class="list-group-item list-group-item-primary"> ${data_list_level[i][lang1]}  =  ${data_list_level[i][lang2]}   =  ${data_list_level[i][lang3]} </li>` +
+      `<li class="list-group-item list-group-item-primary"> ${data_list_level[i][lang2]}   =  ${data_list_level[i][lang3]} </li>` +
       html;
   }
   html = html + "</ul>";
@@ -189,7 +217,7 @@ function clickButton(keyLanguage, id_button, index) {
       validateWin(index);
     } else if (keyLanguage == lang2) {
       var label = data_list_level[index][lang2];
-      speak(label);
+      speakIng(label);
       if (lang_selected_2 != null) {
         document
           .getElementById(lang_selected_2)
@@ -202,7 +230,7 @@ function clickButton(keyLanguage, id_button, index) {
       validateWin(index);
     } else if (keyLanguage == lang3) {
       var label = data_list_level[index][lang3];
-      speak(label);
+      speakSue(label);
       if (lang_selected_3 != null) {
         document
           .getElementById(lang_selected_3)
