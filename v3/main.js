@@ -19,7 +19,7 @@ var voice;
 configVoices();
 
 var spentchCom = false;
-var textData = "frases.csv";
+var textData = "frases_ing_sue.csv";
 var inxs = [];
 var data_list = [];
 var main_index = 3;
