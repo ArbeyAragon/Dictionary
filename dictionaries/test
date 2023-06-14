@@ -1,0 +1,31 @@
+esp,ing
+"¿Puede decirme un poco acerca de usted?","Can you tell me a little about yourself?"
+"¿Por qué está interesado en este puesto?","Why are you interested in this position?"
+"¿Cuál es su experiencia laboral relevante?","What is your relevant work experience?"
+"¿Cuáles son sus mayores fortalezas?","What are your greatest strengths?"
+"¿Cuáles son sus mayores debilidades?","What are your greatest weaknesses?"
+"¿Cómo se enteró de esta oportunidad de trabajo?","How did you hear about this job opportunity?"
+"¿Por qué dejó su último trabajo?","Why did you leave your last job?"
+
+
+tengo un dataset como el anterior
+con las siguientes parabras crea frases en un contexto de trabajo o de busqueda de inversion para adicionar en el dataset:
+
+Book = Schedule
+Book != Agenda
+Schedule = Agenda
+Sync = Synchonous
+Ping = mesagge to someone on whatever system except email.
+Deadline = End date for somwthing.
+Revenue = Money we get. Money that company receive.
+Quarter = Each 3 months of year (Q1, Q2, Q3, Q4). Ex. January to March is Q1.
+Profit = Money we get after our expenses. Revenue - expenses = profit.
+Budget = Amounting of money or limit of money that we get to spend.
+Priority = Most important right now.
+Brand = Company’s image.
+consultant: assessor
+team: equipment
+tax: tribute
+coach: trainer
+payment: paying
+
