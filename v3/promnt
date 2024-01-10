@@ -1,0 +1,20 @@
+function selectedDictionary(dictionaryFile) {
+  textData = dictionaryFile;
+  const path =
+    "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries"; //window.location.href.split("/").slice(3,-1).join('/');
+  console.log(path + "/" + dictionaryFile);
+  Plotly.d3.csv(path + "/" + dictionaryFile, function (err, rows) {
+    data_list = rows;
+    inxs = getRandomArray(data_list.length);
+    renderTable();
+  });
+}
+// este codigo debe leer un csv con la siguiente extructura
+esp,ing,sue
+"¿Cuál es el proceso de evaluación del desempeño y cómo se proporciona retroalimentación a los empleados?", "What is the performance evaluation process and how is feedback provided to employees?", "Vad är processen för prestationsutvärdering och hur ges feedback till anställda?"
+"¿Cómo es el equilibrio entre trabajo y vida personal en la empresa?", "What is the work-life balance like at the company?", "Hur är balansen mellan arbete och privatliv på företaget?"
+"¿Qué tipo de capacitación y apoyo se brinda a los nuevos empleados?", "What kind of training and support is provided to new employees?", "Vilken typ av utbildning och stöd ges till nya anställda?"
+"Es un placer conocerlo, ¿cómo ha sido su experiencia en el mundo de las inversiones hasta ahora?", "It's a pleasure to meet you, how has your experience been in the investment world so far?", "Det är ett nöje att träffas, hur har din erfarenhet av investeringsvärlden varit hittills?"
+"He oído hablar mucho sobre su éxito en inversiones anteriores, ¿podría compartir alguna de sus experiencias más interesantes?", "I've heard a lot about your success in previous investments, could you share some of your most interesting experiences?", "Jag har hört mycket om din framgång i tidigare investeringar, skulle du kunna dela några av dina mest intressanta erfarenheter?"
+
+// pero separa las columnsa cuando hay , dentro de las comillas y esto es un error 

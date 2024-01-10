@@ -127,16 +127,30 @@ function runGame() {
 function selectedDictionary(dictionaryFile) {
   textData = dictionaryFile;
   const path =
-    "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries"; //window.location.href.split("/").slice(3,-1).join('/');
+    "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries";
   console.log(path + "/" + dictionaryFile);
-  Plotly.d3.csv(path + "/" + dictionaryFile, function (err, rows) {
-    data_list = rows;
-    inxs = getRandomArray(data_list.length);
-    renderTable();
-    //console.log(data_list);
-    //console.log(inxs);
-  });
+  
+  fetch(path + "/" + dictionaryFile)
+    .then(response => response.text())
+    .then(data => {
+      const lines = data.split("\n").filter(line => line.trim() !== '');
+      const rows = lines.map(line => {
+        const columns = line.split(/"\s*,\s*"/);
+        if (columns.length === 3) {
+          return {
+            esp: columns[0].replace(/^"|"$/g, ""),
+            ing: columns[1].replace(/^"|"$/g, ""),
+            sue: columns[2].replace(/^"|"$/g, ""),
+          };
+        }
+      }).filter(row => row !== undefined);
+      
+      data_list = rows;
+      inxs = getRandomArray(data_list.length);
+      renderTable();
+    });
 }
+
 
 function getRandomArray(len) {
   var randomArray = [];
