@@ -64,6 +64,25 @@
       .button:hover {
         box-shadow: 4px 4px 10px 0 #ccc;
       }
+      .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      .input-container input {
+        flex: 1;
+        margin-right: 10px;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .input-container button {
+        padding: 10px 20px;
+      }
     </style>
   </head>
   <body>
@@ -98,6 +117,13 @@
       </button>
       <hr />
       <div id="btnesp"></div>
+
+      <hr />
+      <!-- Aquí se agrega el nuevo input con un flex container para expandirse -->
+      <div class="input-container">
+        <input type="text" id="inputEnglish" placeholder="Write the English translation" autocomplete="off" />
+        <button id="btnGo" class="btn btn-primary">Go</button>
+      </div>
       <hr />
       <div id="btning"></div>
     </div>

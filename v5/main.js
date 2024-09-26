@@ -2,6 +2,69 @@ var startButton = document
   .getElementById("btnStart")
   .addEventListener("click", start);
 
+// Evento para el botón "Go"
+document.getElementById("btnGo").addEventListener("click", validateInput);
+
+// También puedes presionar Enter para validar
+document.getElementById("inputEnglish").addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    validateInput();
+  }
+});
+
+// Función para limpiar la frase y convertirla en un fingerprint
+function createFingerprint(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-zA-Z]/g, ''); // Elimina caracteres especiales y espacios
+}
+
+// Función para validar si la frase escrita en inglés coincide con la frase en español seleccionada
+function validateInput() {
+  console.log("--------------------0")
+  const inputField = document.getElementById("inputEnglish");
+  const inputText = inputField.value;
+  
+
+  if (inputText === "") return; // No hacer nada si el input está vacío
+
+  console.log(inputText)
+  // Crear fingerprint del texto escrito en el input
+  const inputFingerprint = createFingerprint(inputText);
+
+  // Buscar si coincide con la frase seleccionada en español
+  console.log("--------------------1")
+  console.log(lang_selected_1)
+  console.log(lang_selected_2)
+  if (lang_selected_2 !== null) {
+    
+  console.log("--------------------2")
+    const selectedIndex = lang_selected_2.split("_")[1]; // Obtiene el índice seleccionado en español
+    const selectedPhraseInEnglish = data_list_level[selectedIndex]["ing"];
+
+    // Crear fingerprint de la frase en inglés
+    const englishFingerprint = createFingerprint(selectedPhraseInEnglish);
+
+    console.log("--------------------3")
+    console.log("-"+inputFingerprint+"-")
+    console.log("-"+englishFingerprint+"-")
+    // Comparar fingerprints
+    if (inputFingerprint === englishFingerprint) {
+      // Si coincide, ejecutar la función clickButton para la frase en inglés
+      
+  console.log("--------------------4")
+      clickButton("ing", `id_${selectedIndex}_ing`, selectedIndex);
+      inputField.value = ""; // Limpia el campo después de un acierto
+    } else {
+      
+  console.log("--------------------5")
+      alert("The entered English phrase does not match the selected Spanish phrase.");
+      inputField.value = ""; // Borra el texto ingresado si no coincide
+    }
+  }
+}
+
+
 var udoButton = document
   .getElementById("btnUdo")
   .addEventListener("click", udoActionv);
