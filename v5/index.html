@@ -28,8 +28,8 @@
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-        width: 400px;
-        padding: 20px;
+        width: 100%;
+        padding: 5%;
         box-shadow: 0 0 10px 0 #ccc;
       }
       .container textarea {
@@ -83,6 +83,61 @@
       .input-container button {
         padding: 10px 20px;
       }
+
+/* Estilos para el modal de error */
+.modal {
+  display: none; /* Ocultar por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Para que el contenido del modal sea responsivo y se ajuste a pantallas grandes */
+.modal-content {
+  background-color: #fefefe;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1200px; /* Ajuste para pantallas muy grandes */
+  height: 60%; /* Ajuste de la altura */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para resaltar la tarjeta */
+  overflow: auto; /* En caso de que haya mucho contenido */
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  word-break: break-word; /* Ajusta las palabras largas */
+}
     </style>
   </head>
   <body>
@@ -97,7 +152,7 @@
       <h2 id="counter"></h2>
     </div>
 
-    <div class="text-center" id="main" hidden>
+    <div class="container text-center" id="main" hidden>
       <h1>Game of memory</h1>
       <p style="font-size: 36px">
         <a class="text-success">Total: </a
@@ -117,16 +172,26 @@
       </button>
       <hr />
       <div id="btnesp"></div>
-
+    
       <hr />
       <!-- Aquí se agrega el nuevo input con un flex container para expandirse -->
       <div class="input-container">
         <input type="text" id="inputEnglish" placeholder="Write the English translation" autocomplete="off" />
         <button id="btnGo" class="btn btn-primary">Go</button>
       </div>
+    
+      <!-- Modal para mostrar el mensaje de error -->
+      <div id="errorModal" class="modal">
+        <div class="modal-content">
+          <span id="closeErrorModal" class="close">&times;</span>
+          <p id="errorMessage"></p>
+        </div>
+      </div>
+    
       <hr />
       <div id="btning"></div>
     </div>
+    
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"

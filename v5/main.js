@@ -19,50 +19,78 @@ function createFingerprint(text) {
     .replace(/[^a-zA-Z]/g, ''); // Elimina caracteres especiales y espacios
 }
 
+// Función para resaltar las diferencias entre dos textos
+function highlightDifferences(inputText, correctText) {
+  let highlightedText = "";
+  const minLength = Math.min(inputText.length, correctText.length);
+
+  for (let i = 0; i < minLength; i++) {
+    if (inputText[i] !== correctText[i]) {
+      highlightedText += `<span class="highlight">${inputText[i]}</span>`;
+    } else {
+      highlightedText += inputText[i];
+    }
+  }
+
+  if (inputText.length > correctText.length) {
+    highlightedText += `<span class="highlight">${inputText.slice(minLength)}</span>`;
+  }
+
+  if (correctText.length > inputText.length) {
+    highlightedText += `<span class="highlight">${correctText.slice(minLength)}</span>`;
+  }
+
+  return highlightedText;
+}
+
+// Función para mostrar el modal con el mensaje de error
+function showErrorModal(inputText, correctText) {
+  const errorMessage = document.getElementById("errorMessage");
+  const modal = document.getElementById("errorModal");
+
+  const highlightedInput = highlightDifferences(inputText, correctText);
+  const highlightedCorrect = highlightDifferences(correctText, inputText);
+
+  errorMessage.innerHTML = `
+    <p>Entered Text: ${highlightedInput}</p>
+    <p>Correct Text: ${highlightedCorrect}</p>
+  `;
+
+  modal.style.display = "block"; // Mostrar el modal
+}
+
+// Cerrar el modal cuando se hace clic en la "X"
+document.getElementById("closeErrorModal").addEventListener("click", function () {
+  document.getElementById("errorModal").style.display = "none"; // Ocultar el modal
+});
+
 // Función para validar si la frase escrita en inglés coincide con la frase en español seleccionada
 function validateInput() {
-  console.log("--------------------0")
   const inputField = document.getElementById("inputEnglish");
   const inputText = inputField.value;
-  
 
-  if (inputText === "") return; // No hacer nada si el input está vacío
+  if (inputText === "") return;
 
-  console.log(inputText)
-  // Crear fingerprint del texto escrito en el input
   const inputFingerprint = createFingerprint(inputText);
 
-  // Buscar si coincide con la frase seleccionada en español
-  console.log("--------------------1")
-  console.log(lang_selected_1)
-  console.log(lang_selected_2)
   if (lang_selected_2 !== null) {
-    
-  console.log("--------------------2")
-    const selectedIndex = lang_selected_2.split("_")[1]; // Obtiene el índice seleccionado en español
+    const selectedIndex = lang_selected_2.split("_")[1];
     const selectedPhraseInEnglish = data_list_level[selectedIndex]["ing"];
-
-    // Crear fingerprint de la frase en inglés
     const englishFingerprint = createFingerprint(selectedPhraseInEnglish);
 
-    console.log("--------------------3")
-    console.log("-"+inputFingerprint+"-")
-    console.log("-"+englishFingerprint+"-")
-    // Comparar fingerprints
     if (inputFingerprint === englishFingerprint) {
-      // Si coincide, ejecutar la función clickButton para la frase en inglés
-      
-  console.log("--------------------4")
       clickButton("ing", `id_${selectedIndex}_ing`, selectedIndex);
       inputField.value = ""; // Limpia el campo después de un acierto
     } else {
-      
-  console.log("--------------------5")
-      alert("The entered English phrase does not match the selected Spanish phrase.");
+      // Mostrar el modal de error con el texto ingresado y el correcto
+      showErrorModal(inputText, selectedPhraseInEnglish);
       inputField.value = ""; // Borra el texto ingresado si no coincide
     }
+  } else {
+    alert("No Spanish phrase selected yet. Please select a phrase in Spanish.");
   }
 }
+
 
 
 var udoButton = document
