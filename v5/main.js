@@ -6,17 +6,17 @@ var startButton = document
 document.getElementById("btnGo").addEventListener("click", validateInput);
 
 // También puedes presionar Enter para validar
-document.getElementById("inputEnglish").addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    validateInput();
-  }
-});
+document
+  .getElementById("inputEnglish")
+  .addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      validateInput();
+    }
+  });
 
 // Función para limpiar la frase y convertirla en un fingerprint
 function createFingerprint(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-zA-Z]/g, ''); // Elimina caracteres especiales y espacios
+  return text.toLowerCase().replace(/[^a-zA-Z]/g, ""); // Elimina caracteres especiales y espacios
 }
 
 // Función para resaltar las diferencias entre dos textos
@@ -33,11 +33,15 @@ function highlightDifferences(inputText, correctText) {
   }
 
   if (inputText.length > correctText.length) {
-    highlightedText += `<span class="highlight">${inputText.slice(minLength)}</span>`;
+    highlightedText += `<span class="highlight">${inputText.slice(
+      minLength
+    )}</span>`;
   }
 
   if (correctText.length > inputText.length) {
-    highlightedText += `<span class="highlight">${correctText.slice(minLength)}</span>`;
+    highlightedText += `<span class="highlight">${correctText.slice(
+      minLength
+    )}</span>`;
   }
 
   return highlightedText;
@@ -59,9 +63,19 @@ function showErrorModal(inputText, correctText) {
   modal.style.display = "block"; // Mostrar el modal
 }
 
-// Cerrar el modal cuando se hace clic en la "X"
-document.getElementById("closeErrorModal").addEventListener("click", function () {
-  document.getElementById("errorModal").style.display = "none"; // Ocultar el modal
+document
+  .getElementById("closeErrorModal")
+  .addEventListener("click", function () {
+    const modal = document.getElementById("errorModal");
+    modal.style.display = "none"; // Ocultar el modal
+  });
+
+// También puedes cerrar el modal al hacer clic fuera del contenido del modal
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("errorModal");
+  if (event.target === modal) {
+    modal.style.display = "none"; // Cierra el modal si se hace clic fuera de su contenido
+  }
 });
 
 // Función para validar si la frase escrita en inglés coincide con la frase en español seleccionada
@@ -70,6 +84,8 @@ function validateInput() {
   const inputText = inputField.value;
 
   if (inputText === "") return;
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$")
+  console.log(inputText)
 
   const inputFingerprint = createFingerprint(inputText);
 
@@ -90,8 +106,6 @@ function validateInput() {
     alert("No Spanish phrase selected yet. Please select a phrase in Spanish.");
   }
 }
-
-
 
 var udoButton = document
   .getElementById("btnUdo")
@@ -184,14 +198,15 @@ function runGame() {
 
 function selectedDictionary(dictionaryFile) {
   textData = dictionaryFile;
-  const path = "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries";
+  const path =
+    "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries";
 
   // Utiliza d3.csv con opciones avanzadas para asegurar que las comillas y comas internas se manejen correctamente
   Plotly.d3.csv(
     path + "/" + dictionaryFile,
     (row) => ({
       esp: row.esp.trim(),
-      ing: row.ing.trim()
+      ing: row.ing.trim(),
     }),
     function (err, rows) {
       if (err) {
@@ -225,8 +240,8 @@ function getRandomInt(min, max) {
 
 function renderTable() {
   data_list_level = [];
-  
-  if((main_index-min_index) > 12){
+
+  if (main_index - min_index > 12) {
     min_index += 3;
   }
   for (var i = min_index; i < main_index; i++) {

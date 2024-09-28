@@ -84,71 +84,70 @@
         padding: 10px 20px;
       }
 
-/* Estilos para el modal de error */
-.modal {
-  display: none; /* Ocultar por defecto */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%; /* Ocupa todo el ancho */
-  height: 100%; /* Ocupa todo el alto */
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
-  display: flex; /* Flexbox para centrar */
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-}
+      /* Estilos para el modal de error */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000; /* Asegúrate de que el z-index del modal sea superior a otros elementos */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-/* Para que el contenido del modal sea responsivo y se ajuste a pantallas grandes */
-.modal-content {
-  background-color: #fefefe;
-  position: relative; /* Posición relativa para el botón de cerrar */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px; /* Tamaño máximo de la tarjeta */
-  height: auto; /* Ajuste de la altura según el contenido */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para resaltar la tarjeta */
-  overflow: auto; /* En caso de que haya mucho contenido */
-}
+      /* Para que el contenido del modal sea responsivo y se ajuste a pantallas grandes */
+      .modal-content {
+        background-color: #fefefe;
+        position: relative;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        height: auto;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        overflow: auto;
+      }
 
-/* Posiciona el botón de cerrar dentro del modal */
-.close {
-  color: #aaa;
-  position: absolute; /* Posición absoluta para estar dentro del modal */
-  top: 10px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
+      /* Posiciona el botón de cerrar dentro del modal */
+      .close {
+        color: #333;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-.highlight {
-  color: red;
-  font-weight: bold;
-  font-size: 16px;
-  word-break: break-word; /* Ajusta las palabras largas */
-}
+      .highlight {
+        color: red;
+        font-weight: bold;
+        font-size: 16px;
+        word-break: break-word; /* Ajusta las palabras largas */
+      }
 
-button.btn {
-  display: inline-block;
-  white-space: normal; /* Permitir que el texto se divida en múltiples líneas */
-  word-wrap: break-word; /* Permitir saltos de línea dentro de las palabras si son muy largas */
-  overflow-wrap: break-word; /* Romper palabras largas */
-  text-align: center;
-  max-width: 100%; /* Asegura que los botones no se expandan más allá de la pantalla */
-  padding: 10px;
-  font-size: 16px;
-  margin: 5px;
-}
-
+      button.btn {
+        display: inline-block;
+        white-space: normal; /* Permitir que el texto se divida en múltiples líneas */
+        word-wrap: break-word; /* Permitir saltos de línea dentro de las palabras si son muy largas */
+        overflow-wrap: break-word; /* Romper palabras largas */
+        text-align: center;
+        max-width: 100%; /* Asegura que los botones no se expandan más allá de la pantalla */
+        padding: 10px;
+        font-size: 16px;
+        margin: 5px;
+      }
     </style>
   </head>
   <body>
@@ -183,14 +182,19 @@ button.btn {
       </button>
       <hr />
       <div id="btnesp"></div>
-    
+
       <hr />
       <!-- Aquí se agrega el nuevo input con un flex container para expandirse -->
       <div class="input-container">
-        <input type="text" id="inputEnglish" placeholder="Write the English translation" autocomplete="off" />
+        <input
+          type="text"
+          id="inputEnglish"
+          placeholder="Write the English translation"
+          autocomplete="off"
+        />
         <button id="btnGo" class="btn btn-primary">Go</button>
       </div>
-    
+
       <!-- Modal para mostrar el mensaje de error -->
       <div id="errorModal" class="modal">
         <div class="modal-content">
@@ -198,11 +202,10 @@ button.btn {
           <p id="errorMessage"></p>
         </div>
       </div>
-    
+
       <hr />
       <div id="btning"></div>
     </div>
-    
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
