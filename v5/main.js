@@ -2,6 +2,42 @@ var startButton = document
   .getElementById("btnStart")
   .addEventListener("click", start);
 
+
+// Detectar la tecla "Espacio" y reproducir la última palabra si cumple la condición
+document
+  .getElementById("inputEnglish")
+  .addEventListener("keyup", function (event) {
+    // Verifica si se presionó la tecla Espacio
+    if (event.key === " ") {
+      const inputField = document.getElementById("inputEnglish");
+      const inputText = inputField.value.trim();
+
+      // Divide el texto en palabras usando el espacio como delimitador
+      const words = inputText.split(" ");
+      
+      // Obtener la última palabra ingresada
+      const lastWord = words[words.length - 1];
+      
+      // Validar que la última palabra tenga más de 3 caracteres
+      //if (lastWord.length > 1) {
+        // Reproducir la última palabra
+        speak(lastWord);
+      //}
+    }
+  });
+
+// Función para reproducir texto con voz
+function speak(text) {
+  var msg = new SpeechSynthesisUtterance();
+  msg.volume = 1;
+  msg.voice = voice;
+  msg.rate = 1;
+  msg.pitch = 1;
+  msg.text = text;
+  window.speechSynthesis.speak(msg);
+}
+
+
 // Evento para el botón "Go"
 document.getElementById("btnGo").addEventListener("click", validateInput);
 
