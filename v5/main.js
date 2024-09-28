@@ -184,16 +184,25 @@ function runGame() {
 
 function selectedDictionary(dictionaryFile) {
   textData = dictionaryFile;
-  const path =
-    "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries"; //window.location.href.split("/").slice(3,-1).join('/');
-  console.log(path + "/" + dictionaryFile);
-  Plotly.d3.csv(path + "/" + dictionaryFile, function (err, rows) {
-    data_list = rows;
-    inxs = getRandomArray(data_list.length);
-    renderTable();
-    //console.log(data_list);
-    //console.log(inxs);
-  });
+  const path = "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries";
+
+  // Utiliza d3.csv con opciones avanzadas para asegurar que las comillas y comas internas se manejen correctamente
+  Plotly.d3.csv(
+    path + "/" + dictionaryFile,
+    (row) => ({
+      esp: row.esp.trim(),
+      ing: row.ing.trim()
+    }),
+    function (err, rows) {
+      if (err) {
+        console.error("Error reading CSV:", err);
+        return;
+      }
+      data_list = rows;
+      inxs = getRandomArray(data_list.length);
+      renderTable();
+    }
+  );
 }
 
 function getRandomArray(len) {
