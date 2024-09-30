@@ -128,9 +128,15 @@
     </div>
 
     <script>
+      // Lista de URLs de CSV
+      const csvUrls = [
+        "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/ensayo_obtenga_el_si_IELTS.csv",
+        "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/ensayo_lo_que_un_lider_no_debe_delegar_IELTS.csv",
+        "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/ensayo_los_7_habitos_de_la_gente_altamente_efectiva_IELTS.csv"
+      ];
       // Cambia esta URL a la URL del CSV que quieres usar.
-      const csvUrl =
-        "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/frases_v5.csv";
+      const csvUrl = csvUrls[Math.floor(Math.random() * csvUrls.length)];
+
       let data_list = []; // Almacenará las frases del CSV.
       let currentTranscribedText = ""; // Texto transcrito correctamente.
       let remainingPhrases = []; // Frases que aún faltan por transcribir.
