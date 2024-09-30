@@ -45,7 +45,28 @@
       .input-container button {
         padding: 10px 20px;
       }
-      /* Estilos para el modal */
+      .score-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+      }
+      .score-item {
+        flex: 1;
+        margin: 0 10px;
+        text-align: center;
+      }
+      .score-value {
+        font-size: 36px;
+        font-weight: bold;
+      }
+      .score-value.green {
+        color: green;
+      }
+      .score-value.red {
+        color: red;
+      }
       .modal {
         display: none;
         position: fixed;
@@ -86,10 +107,25 @@
   <body>
     <div class="container">
       <!-- Section 1: Score -->
-      <div class="section text-center">
-        <h2>Score</h2>
-        <p>Correct: <span id="correctCount">0</span></p>
-        <p>Incorrect: <span id="incorrectCount">0</span></p>
+      <div class="section">
+        <div class="score-container">
+          <div class="score-item">
+            <h2>Correct</h2>
+            <p id="correctCount" class="score-value green">0</p>
+          </div>
+          <div class="score-item">
+            <h2>Incorrect</h2>
+            <p id="incorrectCount" class="score-value red">0</p>
+          </div>
+          <div class="score-item">
+            <h2>Palabras Transcritas</h2>
+            <p id="transcribedWords" class="score-value green">0</p>
+          </div>
+          <div class="score-item">
+            <h2>Tiempo Transcurrido</h2>
+            <p id="elapsedTime" class="score-value red">0 s</p>
+          </div>
+        </div>
       </div>
 
       <!-- Section 2: Transcribed Text -->
@@ -128,7 +164,6 @@
     </div>
 
     <script>
-      // Lista de URLs de CSV
       const csvUrls = [
         "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/ensayo_obtenga_el_si_IELTS.csv",
         "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/ensayo_lo_que_un_lider_no_debe_delegar_IELTS.csv",
@@ -140,50 +175,39 @@
         "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/task1_renewable_energy_trends_IELTS.csv",
         "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries/task2_work_from_home_vs_office_IELTS.csv",
       ];
-      // Cambia esta URL a la URL del CSV que quieres usar.
+
       const csvUrl = csvUrls[Math.floor(Math.random() * csvUrls.length)];
 
-      let data_list = []; // Almacenará las frases del CSV.
-      let currentTranscribedText = ""; // Texto transcrito correctamente.
-      let remainingPhrases = []; // Frases que aún faltan por transcribir.
+      let data_list = [];
+      let currentTranscribedText = "";
+      let remainingPhrases = [];
       let correctCount = 0;
       let incorrectCount = 0;
+      let startTime = null;
 
-      // Cargar CSV desde URL y asegurarse de que tenga contenido válido.
-      Plotly.d3.csv(
-        csvUrl,
-        (row) => ({
-          esp: row.esp.trim(),
-          ing: row.ing.trim(),
-        }),
-        function (err, rows) {
-          if (err) {
-            console.error("Error reading CSV:", err);
-            return;
-          }
-          // Filtrar filas nulas
-          data_list = rows.filter((row) => row !== null && row["ing"] !== "");
-          remainingPhrases = data_list.map((row) => row["ing"]); // Copiar las frases como pendientes.
-          renderRemainingPhrases();
+      Plotly.d3.csv(csvUrl, (row) => ({ esp: row.esp.trim(), ing: row.ing.trim() }), function (err, rows) {
+        if (err) {
+          console.error("Error reading CSV:", err);
+          return;
         }
-      );
+        data_list = rows.filter((row) => row !== null && row["ing"] !== "");
+        remainingPhrases = data_list.map((row) => row["ing"]);
+        renderRemainingPhrases();
+      });
 
-      // Renderizar las frases restantes como botones en la sección 4.
       function renderRemainingPhrases() {
         const remainingDiv = document.getElementById("remainingPhrases");
-        remainingDiv.innerHTML = ""; // Limpiar contenido previo.
+        remainingDiv.innerHTML = "";
         remainingPhrases.forEach((phrase, index) => {
           const phraseButton = document.createElement("button");
           phraseButton.className = "btn btn-info btn-block mb-2";
           phraseButton.textContent = phrase;
-          // Agregar la traducción en español como tooltip
           phraseButton.title = data_list.find((row) => row.ing === phrase).esp;
           phraseButton.onclick = () => speakPhrase(phrase);
           remainingDiv.appendChild(phraseButton);
         });
       }
 
-      // Reproducir la frase seleccionada usando Speech Synthesis.
       function speakPhrase(text) {
         const msg = new SpeechSynthesisUtterance();
         msg.volume = 1;
@@ -193,55 +217,68 @@
         window.speechSynthesis.speak(msg);
       }
 
-      // Verificar si la entrada es correcta al presionar "Go" o Enter.
-      document
-        .getElementById("goButton")
-        .addEventListener("click", validateInput);
-      document
-        .getElementById("transcriptionInput")
-        .addEventListener("keypress", function (event) {
-          if (event.key === "Enter") {
-            validateInput();
-          }
-        });
+      document.getElementById("goButton").addEventListener("click", validateInput);
+      document.getElementById("transcriptionInput").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          validateInput();
+        }
+      });
 
-      // Detectar la tecla Espacio para reproducir la última palabra ingresada.
-      document
-        .getElementById("transcriptionInput")
-        .addEventListener("keyup", function (event) {
-          if (event.key === " ") {
-            const inputField = document.getElementById("transcriptionInput");
-            const inputText = inputField.value.trim();
-            const words = inputText.split(" ");
-            const lastWord = words[words.length - 1];
-            speakPhrase(lastWord);
-          }
-        });
+      document.getElementById("transcriptionInput").addEventListener("keyup", function (event) {
+        if (startTime === null) startTime = Date.now(); // Start time tracking
 
-      // Validar la entrada del usuario y actualizar las secciones.
+        if (event.key === " ") {
+          const inputField = document.getElementById("transcriptionInput");
+          const inputText = inputField.value.trim();
+          const words = inputText.split(" ");
+          const lastWord = words[words.length - 1];
+          speakPhrase(lastWord);
+        }
+      });
+
       function validateInput() {
         const inputField = document.getElementById("transcriptionInput");
         const inputText = inputField.value.trim();
         if (inputText === "") return;
 
-        const phraseIndex = remainingPhrases.indexOf(inputText);
-        if (phraseIndex !== -1) {
+        if (startTime === null) startTime = Date.now(); // Start time tracking if not started
+
+        const inputFingerprint = createFingerprint(inputText);
+        const matchingPhrase = remainingPhrases.find(phrase => createFingerprint(phrase) === inputFingerprint);
+
+        if (matchingPhrase) {
           // Frase correcta
           correctCount++;
-          currentTranscribedText += inputText + " ";
-          remainingPhrases.splice(phraseIndex, 1); // Eliminar frase correcta.
-          speakPhrase(inputText); // Reproducir la frase completa
+          currentTranscribedText += matchingPhrase + " ";
+          remainingPhrases = remainingPhrases.filter(phrase => phrase !== matchingPhrase);
+          speakPhrase(matchingPhrase);
           updateUI();
         } else {
           // Frase incorrecta
           incorrectCount++;
-          showErrorModal(inputText, remainingPhrases[phraseIndex] || ""); // Mostrar diferencias
+          showErrorModal(inputText, remainingPhrases[0] || "");
           updateUI();
         }
-        inputField.value = ""; // Limpiar el campo después de validar.
+        inputField.value = "";
       }
 
-      // Función para mostrar el modal con el mensaje de error
+      function createFingerprint(text) {
+        return text.toLowerCase().replace(/[^a-z0-9]/g, "");
+      }
+
+      function updateUI() {
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        const wordCount = currentTranscribedText.split(" ").filter((word) => word !== "").length;
+
+        document.getElementById("correctCount").textContent = correctCount;
+        document.getElementById("incorrectCount").textContent = incorrectCount;
+        document.getElementById("transcribedWords").textContent = wordCount;
+        document.getElementById("elapsedTime").textContent = `${elapsedTime} s`;
+        document.getElementById("transcribedText").textContent = currentTranscribedText;
+
+        renderRemainingPhrases();
+      }
+
       function showErrorModal(inputText, correctText) {
         const errorMessage = document.getElementById("errorMessage");
         const modal = document.getElementById("errorModal");
@@ -249,10 +286,9 @@
         const highlightedInput = highlightDifferences(inputText, correctText);
         errorMessage.innerHTML = `<p>Entered Text: ${highlightedInput}</p><p>Correct Text: ${correctText}</p>`;
 
-        modal.style.display = "flex"; // Mostrar el modal
+        modal.style.display = "flex";
       }
 
-      // Función para resaltar las diferencias entre dos textos
       function highlightDifferences(inputText, correctText) {
         let highlightedText = "";
         const minLength = Math.min(inputText.length, correctText.length);
@@ -272,29 +308,17 @@
         return highlightedText;
       }
 
-      // Cerrar el modal al hacer clic en el botón de cerrar o fuera del contenido del modal
-      document
-        .getElementById("closeErrorModal")
-        .addEventListener("click", function () {
-          const modal = document.getElementById("errorModal");
-          modal.style.display = "none"; // Ocultar el modal
-        });
+      document.getElementById("closeErrorModal").addEventListener("click", function () {
+        const modal = document.getElementById("errorModal");
+        modal.style.display = "none";
+      });
 
       window.addEventListener("click", function (event) {
         const modal = document.getElementById("errorModal");
         if (event.target === modal) {
-          modal.style.display = "none"; // Cerrar modal si se hace clic fuera del contenido
+          modal.style.display = "none";
         }
       });
-
-      // Actualizar la interfaz con el texto transcrito y los contadores.
-      function updateUI() {
-        document.getElementById("correctCount").textContent = correctCount;
-        document.getElementById("incorrectCount").textContent = incorrectCount;
-        document.getElementById("transcribedText").textContent =
-          currentTranscribedText;
-        renderRemainingPhrases();
-      }
     </script>
   </body>
 </html>
