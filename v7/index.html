@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Transcription Game</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background: #f6f6f6;
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+      }
+      .section {
+        border: 1px solid #ddd;
+        padding: 20px;
+        min-height: 100px;
+        width: 100%;
+      }
+      .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+      }
+      .input-container input {
+        flex: 1;
+        margin-right: 10px;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .input-container button {
+        padding: 10px 20px;
+      }
+      .score-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+      }
+      .score-item {
+        flex: 1;
+        margin: 0 10px;
+        text-align: center;
+      }
+      .score-value {
+        font-size: 36px;
+        font-weight: bold;
+      }
+      .score-value.green {
+        color: green;
+      }
+      .score-value.red {
+        color: red;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background-color: #fefefe;
+        position: relative;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        overflow: auto;
+      }
+      .close {
+        color: #333;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .highlight {
+        color: red;
+        font-weight: bold;
+      }
+      .copy-button {
+        margin-top: 10px;
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Section 1: Time and Word Count -->
+      <div class="section">
+        <div class="score-container">
+          <div class="score-item">
+            <h2>Palabras Transcritas</h2>
+            <p id="transcribedWords" class="score-value green">0</p>
+          </div>
+          <div class="score-item">
+            <h2>Tiempo Transcurrido</h2>
+            <p id="elapsedTime" class="score-value red">0 s</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Transcribed Text -->
+      <div class="section">
+        <h2>Transcribed Text</h2>
+        <div id="transcribedText"></div>
+        <button id="copyButton" class="btn btn-secondary copy-button">Copiar Texto</button>
+      </div>
+
+      <!-- Section 3: Input -->
+      <div class="section">
+        <h2>Input</h2>
+        <div class="input-container">
+          <input
+            type="text"
+            id="transcriptionInput"
+            placeholder="Write here..."
+            autocomplete="off"
+          />
+          <button id="goButton" class="btn btn-primary">Go</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentTranscribedText = "";
+      let startTime = null;
+
+      document.getElementById("goButton").addEventListener("click", handleInput);
+      document.getElementById("transcriptionInput").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          handleInput();
+        }
+      });
+
+      document.getElementById("transcriptionInput").addEventListener("keyup", function (event) {
+        if (startTime === null) startTime = Date.now(); // Start time tracking
+
+        if (event.key === " ") {
+          const inputField = document.getElementById("transcriptionInput");
+          const inputText = inputField.value.trim();
+          const words = inputText.split(" ");
+          const lastWord = words[words.length - 1];
+          speakPhrase(lastWord);
+        }
+      });
+
+      function handleInput() {
+        const inputField = document.getElementById("transcriptionInput");
+        const inputText = inputField.value.trim();
+        if (inputText === "") return;
+
+        if (startTime === null) startTime = Date.now(); // Start time tracking if not started
+
+        // Add the input text to the transcribed text section
+        currentTranscribedText += inputText + " ";
+        speakPhrase(inputText);
+        updateUI();
+
+        // Clear the input field
+        inputField.value = "";
+      }
+
+      function speakPhrase(text) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.volume = 1;
+        msg.rate = 1;
+        msg.pitch = 1;
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+      }
+
+      function updateUI() {
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        const wordCount = currentTranscribedText.split(" ").filter((word) => word !== "").length;
+
+        document.getElementById("transcribedWords").textContent = wordCount;
+        document.getElementById("elapsedTime").textContent = `${elapsedTime} s`;
+        document.getElementById("transcribedText").textContent = currentTranscribedText;
+      }
+
+      document.getElementById("copyButton").addEventListener("click", function () {
+        const textToCopy = currentTranscribedText.trim();
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          alert("Texto copiado al portapapeles");
+        }).catch((err) => {
+          console.error("Error al copiar texto: ", err);
+        });
+      });
+    </script>
+  </body>
+</html>
