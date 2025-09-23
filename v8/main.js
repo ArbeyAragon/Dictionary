@@ -157,6 +157,7 @@ configVoices();
 
 var spentchCom = false;
 var textData = "frases_v8.csv";
+console.log(textData);
 var inxs = [];
 var data_list = [];
 var main_index = 3;
