@@ -156,7 +156,7 @@ var voice;
 configVoices();
 
 var spentchCom = false;
-var textData = "frases_v5.csv";
+var textData = "frases_v8.csv";
 var inxs = [];
 var data_list = [];
 var main_index = 3;
