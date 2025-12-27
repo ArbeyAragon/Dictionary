@@ -238,24 +238,48 @@ function selectedDictionary(dictionaryFile) {
   const path =
     "https://raw.githubusercontent.com/ArbeyAragon/Dictionary/master/dictionaries";
 
-  // Utiliza d3.csv con opciones avanzadas para asegurar que las comillas y comas internas se manejen correctamente
-  Plotly.d3.csv(
-    path + "/" + dictionaryFile,
-    (row) => ({
-      esp: row.esp.trim(),
-      ing: row.ing.trim(),
-    }),
-    function (err, rows) {
-      if (err) {
-        console.error("Error reading CSV:", err);
-        return;
-      }
-      data_list = rows;
-      inxs = getRandomArray(data_list.length);
-      renderTable();
+  Plotly.d3.csv(path + "/" + dictionaryFile, function (err, rows) {
+    if (err) {
+      console.error("Error reading CSV:", err);
+      return;
     }
-  );
+
+    // Normaliza y filtra filas inválidas
+    const cleaned = (rows || [])
+      .map((row) => {
+        if (!row) return null;
+
+        // Soporta variantes de header y BOM
+        const espRaw =
+          row.esp ?? row.ESP ?? row["\ufeffesp"] ?? row["Esp"] ?? row["ES"];
+        const ingRaw =
+          row.ing ?? row.ING ?? row["\ufeffing"] ?? row["Ing"] ?? row["EN"];
+
+        const esp = (espRaw ?? "").toString().trim();
+        const ing = (ingRaw ?? "").toString().trim();
+
+        // descarta filas vacías
+        if (!esp && !ing) return null;
+
+        return { esp, ing };
+      })
+      .filter(Boolean);
+
+    // Si quedó vacío, casi seguro es delimitador/headers
+    if (cleaned.length === 0) {
+      console.error(
+        "CSV loaded but no valid rows found. Revisa headers (esp,ing) o delimitador (, vs ;).",
+        rows?.[0]
+      );
+      return;
+    }
+
+    data_list = cleaned;
+    inxs = getRandomArray(data_list.length);
+    renderTable();
+  });
 }
+
 
 function getRandomArray(len) {
   var randomArray = [];
