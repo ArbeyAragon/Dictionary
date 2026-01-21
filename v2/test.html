@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comparador de columnas numéricas</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #f6f7fb;
+        color: #1f1f1f;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+      }
+
+      p {
+        margin-top: 0;
+        color: #555;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .panel {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+      }
+
+      .panel h2 {
+        margin-top: 0;
+        font-size: 18px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin: 12px 0 6px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 220px;
+        resize: vertical;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #cbd5f5;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+        background: #fefeff;
+      }
+
+      textarea[readonly] {
+        background: #f3f4f8;
+      }
+
+      .results {
+        margin-top: 24px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .badge {
+        background: #e0e7ff;
+        color: #1e3a8a;
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #0f172a;
+          color: #e2e8f0;
+        }
+
+        p {
+          color: #cbd5f5;
+        }
+
+        .panel {
+          background: #111827;
+          box-shadow: none;
+          border: 1px solid #1f2937;
+        }
+
+        textarea {
+          background: #0b1220;
+          border-color: #334155;
+          color: #e2e8f0;
+        }
+
+        textarea[readonly] {
+          background: #0f172a;
+        }
+
+        .badge {
+          background: #1e293b;
+          color: #c7d2fe;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Comparador de columnas numéricas</h1>
+    <p>
+      Pega tus datos en los dos lados. Se limpiarán caracteres especiales y se
+      compararán los números. La diferencia aparecerá en el tercer cuadro.
+    </p>
+
+    <section class="layout">
+      <div class="panel">
+        <h2>Columna izquierda</h2>
+        <label for="leftInput">Datos originales</label>
+        <textarea
+          id="leftInput"
+          placeholder="Ej: 12, 14a, 18\n20-30\n#40"
+        ></textarea>
+
+        <label for="leftClean">Números limpios</label>
+        <textarea id="leftClean" readonly></textarea>
+      </div>
+
+      <div class="panel">
+        <h2>Columna derecha</h2>
+        <label for="rightInput">Datos originales</label>
+        <textarea
+          id="rightInput"
+          placeholder="Ej: 14, 22, 30\n32b\n-40"
+        ></textarea>
+
+        <label for="rightClean">Números limpios</label>
+        <textarea id="rightClean" readonly></textarea>
+      </div>
+    </section>
+
+    <section class="panel results">
+      <h2>Diferencias</h2>
+      <label for="diffOutput">Números que no están en ambos grupos</label>
+      <textarea id="diffOutput" readonly></textarea>
+
+      <div class="stats">
+        <span class="badge" id="leftCount">Izquierda: 0</span>
+        <span class="badge" id="rightCount">Derecha: 0</span>
+        <span class="badge" id="diffCount">Diferencias: 0</span>
+      </div>
+    </section>
+
+    <script>
+      const leftInput = document.getElementById("leftInput");
+      const rightInput = document.getElementById("rightInput");
+      const leftClean = document.getElementById("leftClean");
+      const rightClean = document.getElementById("rightClean");
+      const diffOutput = document.getElementById("diffOutput");
+      const leftCount = document.getElementById("leftCount");
+      const rightCount = document.getElementById("rightCount");
+      const diffCount = document.getElementById("diffCount");
+
+      const numberPattern = /-?\d+(?:[\.,]\d+)?/g;
+
+      const normalizeNumber = (value) => {
+        if (value.includes(",")) {
+          value = value.replace(/,/g, ".");
+        }
+        const parsed = Number.parseFloat(value);
+        if (Number.isNaN(parsed)) {
+          return null;
+        }
+        return parsed.toString();
+      };
+
+      const extractNumbers = (raw) => {
+        const matches = raw.match(numberPattern) ?? [];
+        const numbers = [];
+        for (const match of matches) {
+          const normalized = normalizeNumber(match);
+          if (normalized !== null) {
+            numbers.push(normalized);
+          }
+        }
+        return numbers;
+      };
+
+      const updateOutputs = () => {
+        const leftNumbers = extractNumbers(leftInput.value);
+        const rightNumbers = extractNumbers(rightInput.value);
+
+        leftClean.value = leftNumbers.join("\n");
+        rightClean.value = rightNumbers.join("\n");
+
+        const leftSet = new Set(leftNumbers);
+        const rightSet = new Set(rightNumbers);
+
+        const diff = [];
+        for (const value of leftNumbers) {
+          if (!rightSet.has(value)) {
+            diff.push(value);
+          }
+        }
+        for (const value of rightNumbers) {
+          if (!leftSet.has(value)) {
+            diff.push(value);
+          }
+        }
+
+        diffOutput.value = diff.join("\n");
+        leftCount.textContent = `Izquierda: ${leftNumbers.length}`;
+        rightCount.textContent = `Derecha: ${rightNumbers.length}`;
+        diffCount.textContent = `Diferencias: ${diff.length}`;
+      };
+
+      leftInput.addEventListener("input", updateOutputs);
+      rightInput.addEventListener("input", updateOutputs);
+
+      updateOutputs();
+    </script>
+  </body>
+</html>
