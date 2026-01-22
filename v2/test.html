@@ -175,21 +175,41 @@
       const rightCount = document.getElementById("rightCount");
       const diffCount = document.getElementById("diffCount");
 
-      const numberPattern = /-?\d+(?:[\.,]\d+)?/g;
+      const tokenPattern = /-?\d[\d.,]*/g;
 
       const normalizeNumber = (value) => {
-        if (value.includes(",")) {
-          value = value.replace(/,/g, ".");
-        }
-        const parsed = Number.parseFloat(value);
-        if (Number.isNaN(parsed)) {
+        const trimmed = value.trim();
+        if (!trimmed) {
           return null;
         }
-        return parsed.toString();
+
+        const lastComma = trimmed.lastIndexOf(",");
+        const lastDot = trimmed.lastIndexOf(".");
+        const decimalIndex = Math.max(lastComma, lastDot);
+
+        let integerPart = trimmed;
+        let decimalPart = "";
+
+        if (decimalIndex >= 0) {
+          integerPart = trimmed.slice(0, decimalIndex);
+          decimalPart = trimmed.slice(decimalIndex + 1);
+        }
+
+        const sign = integerPart.startsWith("-") ? "-" : "";
+        integerPart = integerPart.replace(/[^0-9]/g, "");
+        decimalPart = decimalPart.replace(/[^0-9]/g, "");
+
+        if (!integerPart && !decimalPart) {
+          return null;
+        }
+
+        return decimalPart
+          ? `${sign}${integerPart || "0"}.${decimalPart}`
+          : `${sign}${integerPart}`;
       };
 
       const extractNumbers = (raw) => {
-        const matches = raw.match(numberPattern) ?? [];
+        const matches = raw.match(tokenPattern) ?? [];
         const numbers = [];
         for (const match of matches) {
           const normalized = normalizeNumber(match);
@@ -200,32 +220,48 @@
         return numbers;
       };
 
+      const uniquePreserveOrder = (numbers) => {
+        const seen = new Set();
+        const unique = [];
+        for (const value of numbers) {
+          if (!seen.has(value)) {
+            seen.add(value);
+            unique.push(value);
+          }
+        }
+        return unique;
+      };
+
       const updateOutputs = () => {
         const leftNumbers = extractNumbers(leftInput.value);
         const rightNumbers = extractNumbers(rightInput.value);
 
-        leftClean.value = leftNumbers.join("\n");
-        rightClean.value = rightNumbers.join("\n");
+        const leftUnique = uniquePreserveOrder(leftNumbers);
+        const rightUnique = uniquePreserveOrder(rightNumbers);
 
-        const leftSet = new Set(leftNumbers);
-        const rightSet = new Set(rightNumbers);
+        leftClean.value = leftUnique.join("\n");
+        rightClean.value = rightUnique.join("\n");
+
+        const leftSet = new Set(leftUnique);
+        const rightSet = new Set(rightUnique);
 
         const diff = [];
-        for (const value of leftNumbers) {
+        for (const value of leftUnique) {
           if (!rightSet.has(value)) {
             diff.push(value);
           }
         }
-        for (const value of rightNumbers) {
+        for (const value of rightUnique) {
           if (!leftSet.has(value)) {
             diff.push(value);
           }
         }
 
-        diffOutput.value = diff.join("\n");
-        leftCount.textContent = `Izquierda: ${leftNumbers.length}`;
-        rightCount.textContent = `Derecha: ${rightNumbers.length}`;
-        diffCount.textContent = `Diferencias: ${diff.length}`;
+        const diffUnique = uniquePreserveOrder(diff);
+        diffOutput.value = diffUnique.join("\n");
+        leftCount.textContent = `Izquierda: ${leftUnique.length}`;
+        rightCount.textContent = `Derecha: ${rightUnique.length}`;
+        diffCount.textContent = `Diferencias: ${diffUnique.length}`;
       };
 
       leftInput.addEventListener("input", updateOutputs);
